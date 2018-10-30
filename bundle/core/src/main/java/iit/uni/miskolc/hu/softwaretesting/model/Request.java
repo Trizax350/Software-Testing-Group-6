@@ -6,14 +6,16 @@ public class Request {
     private String type;
     private String description;
     private String reference_to_the_Course;
+    private int referenceToUser;
     private String status;
 
-    public Request(int id, String priority, String type, String description, String reference_to_the_Course, String status) {
+    public Request(int id, String priority, String type, String description, String reference_to_the_Course, int referenceToUser, String status) {
         this.id = id;
         this.priority = priority;
         this.type = type;
         this.description = description;
         this.reference_to_the_Course = reference_to_the_Course;
+        this.referenceToUser = referenceToUser;
         this.status = status;
     }
 
@@ -57,6 +59,12 @@ public class Request {
         this.reference_to_the_Course = reference_to_the_Course;
     }
 
+    public int getReferenceToUser() { return referenceToUser; }
+
+    public void setReferenceToUser(int referenceToUser) {
+        this.referenceToUser = referenceToUser;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -73,6 +81,7 @@ public class Request {
                 ", type='" + type + '\'' +
                 ", description='" + description + '\'' +
                 ", reference_to_the_Course='" + reference_to_the_Course + '\'' +
+                ", referenceToUSer='" + referenceToUser + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }

@@ -6,8 +6,7 @@ import java.util.Collection;
 
 public interface ManageRequestsInterface {
 
-    public Collection<Request> getAllRequest();
-
+    Collection<Request> getAllRequest();
     void sendRequest (Request request);
 
 

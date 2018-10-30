@@ -7,10 +7,12 @@ import java.util.Collection;
 
 public interface ManageCoursesInterface {
 
-    public Collection<Course> getAllCourses();
-
     void addCourse(Course course);
+    void updateCourse(Course course);
     void deleteCourse(Course course);
-
+    Collection<Course> getAllCourse();
+    Collection<Course> getAllCourseByRecommendedSemester(int semester);
+    Collection<Course> getAllCourseByCredits(int credits);
+    Collection<Course> getAllCourseByUser(String user);
 
 }
