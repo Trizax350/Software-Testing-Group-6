@@ -14,5 +14,6 @@ public interface ManageCoursesInterface {
     Collection<Course> getAllCourseByRecommendedSemester(int semester);
     Collection<Course> getAllCourseByCredits(int credits);
     Collection<Course> getAllCourseByUser(String user);
+    Collection<Course> findCourseByName(String name);
 
 }
