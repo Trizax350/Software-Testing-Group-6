@@ -1,8 +1,8 @@
 package iit.uni.miskolc.hu.softwaretesting.model;
 
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidCourseNameException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidCreditsValueException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidRecommendedSemesterException;
+import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidCourseNameException;
+import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidCreditsValueException;
+import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidRecommendedSemesterException;
 
 public class Course {
 

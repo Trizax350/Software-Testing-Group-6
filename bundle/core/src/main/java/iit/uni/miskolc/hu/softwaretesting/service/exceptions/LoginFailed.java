@@ -1,4 +1,4 @@
-package iit.uni.miskolc.hu.softwaretesting.exceptions;
+package iit.uni.miskolc.hu.softwaretesting.service.exceptions;
 
 public class LoginFailed extends Exception {
 
