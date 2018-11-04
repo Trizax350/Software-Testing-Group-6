@@ -6,7 +6,7 @@ import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidRecommendedS
 import iit.uni.miskolc.hu.softwaretesting.model.Course;
 import org.junit.Test;
 
-public class CourseContructorTest {
+public class CourseConstructorTest {
 
     private Course course;
 
@@ -14,7 +14,7 @@ public class CourseContructorTest {
      * This test runs the constructor with the correct values
      */
     @Test
-    public void testConsructorWithCorrectValues() throws InvalidCreditsValueException, InvalidRecommendedSemesterException, InvalidCourseNameException {
+    public void testConstructorWithCorrectValues() throws InvalidCreditsValueException, InvalidRecommendedSemesterException, InvalidCourseNameException {
         course = new Course("Name", 5, 1);
     }
 

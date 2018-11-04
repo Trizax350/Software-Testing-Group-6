@@ -1,5 +1,8 @@
 package iit.uni.miskolc.hu.softwaretesting.model;
 
+import iit.uni.miskolc.hu.softwaretesting.service.exceptions.EmptyFieldException;
+import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidIDValueException;
+
 public class Request {
     private int id;
     private String priority;
@@ -9,7 +12,14 @@ public class Request {
     private int referenceToUser;
     private String status;
 
-    public Request(int id, String priority, String type, String description, String reference_to_the_Course, int referenceToUser, String status) {
+    public Request(int id, String priority, String type, String description, String reference_to_the_Course, int referenceToUser, String status) throws InvalidIDValueException, EmptyFieldException {
+        testRequestID(id);
+        testRequestPriority(priority);
+        testRequestType(type);
+        testRequestDescription(description);
+        testRequestReferenceToTheCourse(reference_to_the_Course);
+        testRequestStatus(status);
+
         this.id = id;
         this.priority = priority;
         this.type = type;
@@ -71,6 +81,54 @@ public class Request {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    /**
+     * The id cant be lower than 1
+     */
+    private void testRequestID(int id) throws InvalidIDValueException {
+        if(id < 1)
+            throw new InvalidIDValueException("The id can't be lower than 1!");
+    }
+
+    /**
+     * The priority cant be empty
+     */
+    private void testRequestPriority(String priority) throws EmptyFieldException {
+        if(priority.length() < 1)
+            throw new EmptyFieldException("The priority can't be empty!");
+    }
+
+    /**
+     * The type cant be empty
+     */
+    private void testRequestType(String type) throws EmptyFieldException {
+        if(type.length() < 1)
+            throw new EmptyFieldException("The type can't be empty!");
+    }
+
+    /**
+     * The description cant be empty
+     */
+    private void testRequestDescription(String description) throws EmptyFieldException {
+        if(description.length() < 1)
+            throw new EmptyFieldException("The description can't be empty!");
+    }
+
+    /**
+     * The reference_to_the_Course cant be empty
+     */
+    private void testRequestReferenceToTheCourse(String reference_to_the_Course) throws EmptyFieldException {
+        if(reference_to_the_Course.length() < 1)
+            throw new EmptyFieldException("The reference to the course field can't be empty!");
+    }
+
+    /**
+     * The status cant be empty
+     */
+    private void testRequestStatus(String status) throws EmptyFieldException {
+        if(status.length() < 1)
+            throw new EmptyFieldException("The status can't be empty!");
     }
 
     @java.lang.Override
