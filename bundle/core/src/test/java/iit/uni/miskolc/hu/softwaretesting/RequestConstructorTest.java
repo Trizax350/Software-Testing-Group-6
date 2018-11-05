@@ -1,9 +1,9 @@
 package iit.uni.miskolc.hu.softwaretesting;
 
 import iit.uni.miskolc.hu.softwaretesting.model.Request;
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.EmptyFieldException;
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidIDValueException;
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.RequestAlreadyClosedException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.RequestAlreadyClosedException;
 import org.junit.Test;
 
 public class RequestConstructorTest {
@@ -13,7 +13,7 @@ public class RequestConstructorTest {
     /**
      * This test runs the constructor with empty values
      */
-    @Test
+    @Test(expected = EmptyFieldException.class)
     public void testConstructorWithEmptyValues() throws EmptyFieldException, InvalidIDValueException {
         request = new Request(0,"","","","",0,"");
     }
@@ -21,7 +21,7 @@ public class RequestConstructorTest {
     /**
      * This test runs the constructor with closed status
      */
-    @Test
+    @Test(expected = RequestAlreadyClosedException.class)
     public void testConstructorWithClosedStatus() throws RequestAlreadyClosedException, InvalidIDValueException, EmptyFieldException {
         request = new Request(1,"Low","Example","Desc","Example",1,"Closed");
     }

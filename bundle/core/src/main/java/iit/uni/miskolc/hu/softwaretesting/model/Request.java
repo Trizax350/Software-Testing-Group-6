@@ -1,7 +1,7 @@
 package iit.uni.miskolc.hu.softwaretesting.model;
 
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.EmptyFieldException;
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidIDValueException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
 
 public class Request {
     private int id;

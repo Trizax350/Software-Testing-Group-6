@@ -1,8 +1,8 @@
 package iit.uni.miskolc.hu.softwaretesting;
 
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidCourseNameException;
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidCreditsValueException;
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidRecommendedSemesterException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidCourseNameException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidCreditsValueException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidRecommendedSemesterException;
 import iit.uni.miskolc.hu.softwaretesting.model.Course;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class CourseConstructorTest {
      * This test runs the constructor with the correct values
      */
     @Test
-    public void testConstructorWithCorrectValues() throws InvalidCreditsValueException, InvalidRecommendedSemesterException, InvalidCourseNameException {
+    public void testConstructorWithCorrectValues() throws Exception {
         course = new Course("Name", 5, 1);
     }
 
@@ -22,7 +22,7 @@ public class CourseConstructorTest {
      * This test runs the constructor with less credit than proper
      */
     @Test(expected = InvalidCreditsValueException.class)
-    public void testConstructorWithTooLessCredits() throws InvalidCreditsValueException, InvalidRecommendedSemesterException, InvalidCourseNameException {
+    public void testConstructorWithTooLessCredits() throws Exception {
         course = new Course("Name", 0, 1);
     }
 

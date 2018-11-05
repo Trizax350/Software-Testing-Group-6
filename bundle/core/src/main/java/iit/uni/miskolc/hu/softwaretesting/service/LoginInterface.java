@@ -1,5 +1,7 @@
 package iit.uni.miskolc.hu.softwaretesting.service;
 
+import iit.uni.miskolc.hu.softwaretesting.model.User;
+
 public interface LoginInterface {
 
     public boolean successfulLogin(User user);

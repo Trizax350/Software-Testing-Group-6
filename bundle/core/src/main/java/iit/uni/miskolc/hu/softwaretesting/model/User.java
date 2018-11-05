@@ -1,8 +1,8 @@
 package iit.uni.miskolc.hu.softwaretesting.model;
 
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidIDValueException;
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidPasswordLengthException;
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.EmptyFieldException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidPasswordLengthException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
 
 public class User {
     private int id;

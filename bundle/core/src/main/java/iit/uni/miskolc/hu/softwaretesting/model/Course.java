@@ -1,8 +1,8 @@
 package iit.uni.miskolc.hu.softwaretesting.model;
 
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidCourseNameException;
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidCreditsValueException;
-import iit.uni.miskolc.hu.softwaretesting.service.exceptions.InvalidRecommendedSemesterException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidCourseNameException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidCreditsValueException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidRecommendedSemesterException;
 
 public class Course {
 
@@ -11,8 +11,8 @@ public class Course {
     private int recSem;
 
     public Course(String name, int credits, int recSem) throws InvalidCreditsValueException, InvalidRecommendedSemesterException, InvalidCourseNameException {
-        testCourseName(name);
-        testCreditValue(credits);
+            testCourseName(name);
+            testCreditValue(credits);
         testRecommendedSemester(recSem);
 
         this.name = name;
