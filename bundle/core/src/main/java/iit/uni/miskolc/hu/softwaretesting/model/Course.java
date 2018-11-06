@@ -11,8 +11,8 @@ public class Course {
     private int recSem;
 
     public Course(String name, int credits, int recSem) throws InvalidCreditsValueException, InvalidRecommendedSemesterException, InvalidCourseNameException {
-            testCourseName(name);
-            testCreditValue(credits);
+        testCourseName(name);
+        testCreditValue(credits);
         testRecommendedSemester(recSem);
 
         this.name = name;

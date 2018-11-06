@@ -1,11 +1,17 @@
 package iit.uni.miskolc.hu.softwaretesting.model;
 
+import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
+
 public class Complain {
     private int id;
     private String description;
     private int req_id;
 
-    public Complain(int id, String description, int req_id) {
+    public Complain(int id, String description, int req_id) throws InvalidIDValueException, EmptyFieldException {
+        testIdFields(id, req_id);
+        testDescription(description);
+
         this.id = id;
         this.description = description;
         this.req_id = req_id;
@@ -33,6 +39,16 @@ public class Complain {
 
     public void setReq_id(int req_id) {
         this.req_id = req_id;
+    }
+
+    private void testIdFields(int id, int req_id) throws InvalidIDValueException {
+        if(id <= 0 || req_id <= 0)
+            throw new InvalidIDValueException("ID must be at least 1");
+    }
+
+    private void testDescription(String description) throws EmptyFieldException {
+        if(description.length() < 1)
+            throw new EmptyFieldException("Description can't be empty");
     }
 
     @java.lang.Override
