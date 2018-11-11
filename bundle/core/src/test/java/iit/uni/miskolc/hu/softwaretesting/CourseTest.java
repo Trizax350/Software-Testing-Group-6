@@ -31,7 +31,7 @@ public class CourseTest {
     }
 
     @Test
-    public void testSetName(){
+    public void testSetName() throws InvalidCourseNameException {
         String name = "Course 7";
         this.course.setName(name);
         assertEquals(name, this.course.getName());
@@ -43,7 +43,7 @@ public class CourseTest {
     }
 
     @Test
-    public void testSetCredits(){
+    public void testSetCredits() throws InvalidCreditsValueException {
         int credits = 3;
         this.course.setCredits(credits);
         assertEquals(credits, this.course.getCredits());
@@ -55,7 +55,7 @@ public class CourseTest {
     }
 
     @Test
-    public void testSetRecSem(){
+    public void testSetRecSem() throws InvalidRecommendedSemesterException {
         int recSem = 4;
         this.course.setRecSem(recSem);
         assertEquals(recSem, this.course.getRecSem());

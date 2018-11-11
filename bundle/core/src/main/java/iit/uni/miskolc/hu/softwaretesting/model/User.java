@@ -46,6 +46,31 @@ public class User {
         return password;
     }
 
+    public void setId(int id) throws InvalidIDValueException {
+        testUserID(id);
+        this.id = id;
+    }
+
+    public void setName(String name) throws EmptyFieldException{
+        testName(name);
+        this.name = name;
+    }
+
+    public void setEmail(String email) throws InvalidEmailException {
+        testEmail(email);
+        this.email = email;
+    }
+
+    public void setUsername(String username) throws EmptyFieldException{
+        testUsername(username);
+        this.username = username;
+    }
+
+    public void setPassword(String password) throws InvalidPasswordException {
+        testPasswordLength(password);
+        this.password = password;
+    }
+
     /**
      * The id cant be lower than 1
      */

@@ -34,8 +34,22 @@ public class UserTest {
     }
 
     @Test
+    public void testSetID() throws InvalidIDValueException{
+        int id = 2;
+        this.user.setId(id);
+        assertEquals(id, this.user.getId());
+    }
+
+    @Test
     public void testGetName(){
         assertEquals(this.name, this.user.getName());
+    }
+
+    @Test
+    public void testSetName() throws EmptyFieldException{
+        String name = "Béla";
+        this.user.setName(name);
+        assertEquals(name, this.user.getName());
     }
 
     @Test
@@ -44,12 +58,34 @@ public class UserTest {
     }
 
     @Test
+    public void testSetEmail() throws InvalidEmailException{
+        String email = "e@e";
+        this.user.setEmail(email);
+        assertEquals(email, this.user.getEmail());
+    }
+
+    @Test
     public void testGetUsername(){
         assertEquals(this.username, this.user.getUsername());
+    }
+
+    @Test
+    public void testSetUsername() throws EmptyFieldException{
+        String username = "Nekemse";
+        this.user.setUsername(username);
+        assertEquals(username, this.user.getUsername());
     }
 
     @Test
     public void testGetPassword(){
         assertEquals(this.password, this.user.getPassword());
     }
+
+    @Test
+    public void testSetPassword() throws InvalidPasswordException{
+        String password = "asdf123";
+        this.user.setPassword(password);
+        assertEquals(password, this.user.getPassword());
+    }
+
 }

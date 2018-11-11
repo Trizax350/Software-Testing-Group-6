@@ -19,6 +19,7 @@ public class Request {
         testRequestType(type);
         testRequestDescription(description);
         testRequestReferenceToTheCourse(reference_to_the_Course);
+        testRequestReferenceToUser(referenceToUser);
         testRequestStatus(status);
 
         this.id = id;
@@ -34,7 +35,8 @@ public class Request {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id) throws InvalidIDValueException {
+        testRequestID(id);
         this.id = id;
     }
 
@@ -42,7 +44,8 @@ public class Request {
         return priority;
     }
 
-    public void setPriority(String priority) {
+    public void setPriority(String priority) throws EmptyFieldException {
+        testRequestPriority(priority);
         this.priority = priority;
     }
 
@@ -50,7 +53,8 @@ public class Request {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(String type) throws EmptyFieldException {
+        testRequestType(type);
         this.type = type;
     }
 
@@ -58,7 +62,8 @@ public class Request {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description) throws EmptyFieldException {
+        testRequestDescription(description);
         this.description = description;
     }
 
@@ -66,13 +71,15 @@ public class Request {
         return reference_to_the_Course;
     }
 
-    public void setReference_to_the_Course(String reference_to_the_Course) {
+    public void setReference_to_the_Course(String reference_to_the_Course) throws EmptyFieldException{
+        testRequestReferenceToTheCourse(reference_to_the_Course);
         this.reference_to_the_Course = reference_to_the_Course;
     }
 
     public int getReferenceToUser() { return referenceToUser; }
 
-    public void setReferenceToUser(int referenceToUser) {
+    public void setReferenceToUser(int referenceToUser) throws EmptyFieldException {
+        testRequestReferenceToUser(referenceToUser);
         this.referenceToUser = referenceToUser;
     }
 
@@ -80,7 +87,8 @@ public class Request {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(String status) throws EmptyFieldException {
+        testRequestStatus(status);
         this.status = status;
     }
 
@@ -121,6 +129,11 @@ public class Request {
      */
     private void testRequestReferenceToTheCourse(String reference_to_the_Course) throws EmptyFieldException {
         if(reference_to_the_Course.length() < 1)
+            throw new EmptyFieldException("The reference to the course field can't be empty!");
+    }
+
+    private void testRequestReferenceToUser(int referenceToUser) throws EmptyFieldException {
+        if(referenceToUser < 1)
             throw new EmptyFieldException("The reference to the course field can't be empty!");
     }
 

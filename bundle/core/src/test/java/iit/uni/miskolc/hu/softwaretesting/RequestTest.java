@@ -34,7 +34,7 @@ public class RequestTest {
     }
 
     @Test
-    public void testSetID(){
+    public void testSetID() throws InvalidIDValueException {
         int id = 231;
         this.request.setId(id);
         assertEquals(id, this.request.getId());
@@ -46,7 +46,7 @@ public class RequestTest {
     }
 
     @Test
-    public void testSetPriority(){
+    public void testSetPriority() throws EmptyFieldException {
         String priority = "Low";
         this.request.setPriority(priority);
         assertEquals(priority, this.request.getPriority());
@@ -58,7 +58,7 @@ public class RequestTest {
     }
 
     @Test
-    public void testSetType(){
+    public void testSetType() throws EmptyFieldException {
         String type = "Type 8";
         this.request.setType(type);
         assertEquals(type, this.request.getType());
@@ -70,7 +70,7 @@ public class RequestTest {
     }
 
     @Test
-    public void testSetDescription(){
+    public void testSetDescription() throws EmptyFieldException {
         String description = "This is a description.";
         this.request.setDescription(description);
         assertEquals(description, this.request.getDescription());
@@ -82,7 +82,7 @@ public class RequestTest {
     }
 
     @Test
-    public void testSetReference_to_the_Course(){
+    public void testSetReference_to_the_Course() throws EmptyFieldException {
         String reference_to_the_Course = "Course 10";
         this.request.setReference_to_the_Course(reference_to_the_Course);
         assertEquals(reference_to_the_Course, this.request.getReference_to_the_Course());
@@ -94,7 +94,7 @@ public class RequestTest {
     }
 
     @Test
-    public void testSetReferenceToUser(){
+    public void testSetReferenceToUser() throws EmptyFieldException {
         int referenceToUser = 8;
         this.request.setReferenceToUser(referenceToUser);
         assertEquals(referenceToUser, this.request.getReferenceToUser());
@@ -106,7 +106,7 @@ public class RequestTest {
     }
 
     @Test
-    public void testSetStatus(){
+    public void testSetStatus() throws EmptyFieldException {
         String status = "Open";
         this.request.setStatus(status);
         assertEquals(status, this.request.getStatus());
