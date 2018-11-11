@@ -2,6 +2,7 @@ package iit.uni.miskolc.hu.softwaretesting.model;
 
 import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
 import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.RequestAlreadyClosedException;
 
 public class Request {
     private int id;
