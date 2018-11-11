@@ -1,7 +1,7 @@
-package iit.uni.miskolc.hu.softwaretesting.service;
+package bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.service;
 
 
-import iit.uni.miskolc.hu.softwaretesting.model.Complain;
+import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.model.Complain;
 
 import java.util.Collection;
 

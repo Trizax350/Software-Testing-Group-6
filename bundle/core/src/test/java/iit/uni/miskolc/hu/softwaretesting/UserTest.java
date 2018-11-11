@@ -1,10 +1,7 @@
-package iit.uni.miskolc.hu.softwaretesting;
+package bundle.core.src.test.java.iit.uni.miskolc.hu.softwaretesting;
 
-import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidEmailException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidPasswordException;
-import iit.uni.miskolc.hu.softwaretesting.model.User;
+import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions.*;
+import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.model.User;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

@@ -1,8 +1,8 @@
-package iit.uni.miskolc.hu.softwaretesting;
+package bundle.core.src.test.java.iit.uni.miskolc.hu.softwaretesting;
 
-import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
-import iit.uni.miskolc.hu.softwaretesting.model.Request;
+import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
+import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
+import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.model.Request;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

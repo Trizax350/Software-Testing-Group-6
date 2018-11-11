@@ -1,4 +1,4 @@
-package iit.uni.miskolc.hu.softwaretesting;
+package bundle.dao.src.main.java.iit.uni.miskolc.hu.softwaretesting;
 
 /**
  * Hello world!

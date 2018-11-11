@@ -1,9 +1,8 @@
 package bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions;
 
-public class InvalidIDValueException extends Exception {
+public class CourseNotFoundException extends Exception{
 
-    public InvalidIDValueException(String message) {
+    public CourseNotFoundException(String message) {
         super(message);
     }
-
 }

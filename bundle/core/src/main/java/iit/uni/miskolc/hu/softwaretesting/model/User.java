@@ -1,9 +1,7 @@
-package iit.uni.miskolc.hu.softwaretesting.model;
+package bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.model;
 
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidEmailException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidPasswordException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
+import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions.*;
+
 
 public class User {
     private int id;

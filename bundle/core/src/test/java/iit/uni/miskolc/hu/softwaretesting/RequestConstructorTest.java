@@ -1,9 +1,7 @@
-package iit.uni.miskolc.hu.softwaretesting;
+package bundle.core.src.test.java.iit.uni.miskolc.hu.softwaretesting;
 
-import iit.uni.miskolc.hu.softwaretesting.model.Request;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.RequestAlreadyClosedException;
+import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.model.Request;
+import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions.*;
 import org.junit.Test;
 
 public class RequestConstructorTest {

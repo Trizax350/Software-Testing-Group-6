@@ -1,7 +1,6 @@
-package iit.uni.miskolc.hu.softwaretesting.model;
+package bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.model;
 
-import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
+import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions.*;
 
 public class Complain {
     private int id;

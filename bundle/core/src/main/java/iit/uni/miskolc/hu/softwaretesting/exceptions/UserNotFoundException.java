@@ -1,8 +1,8 @@
 package bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions;
 
-public class InvalidIDValueException extends Exception {
+public class UserNotFoundException extends Exception {
 
-    public InvalidIDValueException(String message) {
+    public UserNotFoundException(String message) {
         super(message);
     }
 
