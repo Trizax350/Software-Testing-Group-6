@@ -9,7 +9,7 @@ import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
-public class UserTest {
+public class UserTestMethods {
     private User user;
     private int id = 888;
     private String name = "Hajnal Róbert";
