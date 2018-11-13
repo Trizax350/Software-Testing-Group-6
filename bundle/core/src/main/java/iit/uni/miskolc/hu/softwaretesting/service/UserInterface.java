@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public interface UserInterface {
 
-    void addUser(User user) throws UserNotFoundException;
+    void addUser(User user);
     void updateUser(User user) throws UserNotFoundException;
     void deleteUser(User user) throws UserNotFoundException;
     Collection<User> getAllUser();

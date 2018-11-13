@@ -8,18 +8,18 @@ public class Student extends User {
 
 
     //students can be active or passive
-    private enum Status {
+    public enum Status {
         ACTIVE, PASSIVE
     }
 
-    private Collection<Status> status;
+    private Status status;
 
-    public Student(int id, String name, String email, String username, String password, Collection<Status> status) throws EmptyFieldException, InvalidIDValueException, InvalidPasswordException, InvalidEmailException {
+    public Student(int id, String name, String email, String username, String password, Status status) throws EmptyFieldException, InvalidIDValueException, InvalidPasswordException, InvalidEmailException {
         super(id, name, email, username, password);
         this.status = status;
     }
 
-    public Collection<Status> getStatus() {
+    public Status getStatus() {
         return status;
     }
 }
