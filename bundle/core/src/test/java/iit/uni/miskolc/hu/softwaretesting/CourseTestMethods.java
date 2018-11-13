@@ -1,7 +1,7 @@
-package bundle.core.src.test.java.iit.uni.miskolc.hu.softwaretesting;
+package iit.uni.miskolc.hu.softwaretesting;
 
-import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions.*;
-import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.model.Course;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
+import iit.uni.miskolc.hu.softwaretesting.model.Course;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

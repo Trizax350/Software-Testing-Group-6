@@ -1,8 +1,8 @@
-package bundle.core.src.test.java.iit.uni.miskolc.hu.softwaretesting;
+package iit.uni.miskolc.hu.softwaretesting;
 
-import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
-import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
-import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.model.Complain;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
+import iit.uni.miskolc.hu.softwaretesting.model.Complain;
 import org.junit.Test;
 
 public class ComplainConstructorTest {

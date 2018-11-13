@@ -1,8 +1,6 @@
-package bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.model;
+package iit.uni.miskolc.hu.softwaretesting.model;
 
-import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions.*;
-
-
+import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
 
 import java.util.Collection;
 

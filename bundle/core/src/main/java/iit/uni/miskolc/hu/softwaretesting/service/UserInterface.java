@@ -1,7 +1,7 @@
-package bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.service;
+package iit.uni.miskolc.hu.softwaretesting.service;
 
-import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.exceptions.UserNotFoundException;
-import bundle.core.src.main.java.iit.uni.miskolc.hu.softwaretesting.model.User;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.UserNotFoundException;
+import iit.uni.miskolc.hu.softwaretesting.model.User;
 
 import java.util.Collection;
 

@@ -29,7 +29,7 @@ public class RequestTestMethods {
     }
 
     @Test
-    public void testSetId(){
+    public void testSetId() throws InvalidIDValueException {
         request.setId(22);
         assertEquals(request.getId(), 22);
     }
@@ -40,7 +40,7 @@ public class RequestTestMethods {
     }
 
     @Test
-    public void testSetPriority() {
+    public void testSetPriority() throws EmptyFieldException {
         request.setPriority("High");
         assertEquals(request.getPriority(), "High");
     }
@@ -51,7 +51,7 @@ public class RequestTestMethods {
     }
 
     @Test
-    public void testSetType() {
+    public void testSetType() throws EmptyFieldException{
         request.setType("Example2");
         assertEquals(request.getType(), "Example2");
     }
@@ -62,7 +62,7 @@ public class RequestTestMethods {
     }
 
     @Test
-    public void testSetDescription() {
+    public void testSetDescription() throws EmptyFieldException{
         request.setDescription("Leiras");
         assertEquals(request.getDescription(), "Leiras");
     }
@@ -73,7 +73,7 @@ public class RequestTestMethods {
     }
 
     @Test
-    public void testSetReference_to_the_Course() {
+    public void testSetReference_to_the_Course() throws EmptyFieldException{
         request.setReference_to_the_Course("Reference");
         assertEquals(request.getReference_to_the_Course(), "Reference");
     }
@@ -84,7 +84,7 @@ public class RequestTestMethods {
     }
 
     @Test
-    public void testSetReferenceToUser() {
+    public void testSetReferenceToUser() throws EmptyFieldException{
         request.setReferenceToUser(33);
         assertEquals(request.getReferenceToUser(), 33);
     }
@@ -95,7 +95,7 @@ public class RequestTestMethods {
     }
 
     @Test
-    public void testSetStatus() {
+    public void testSetStatus() throws EmptyFieldException{
         request.setStatus("Open");
         assertEquals(request.getStatus(), "Open");
     }
