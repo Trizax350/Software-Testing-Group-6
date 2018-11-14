@@ -15,7 +15,7 @@ public class User {
         testName(name);
         testEmail(email);
         testUsername(username);
-        testPasswordLength(password);
+        testPassword(password);
 
         this.id = id;
         this.name = name;
@@ -65,7 +65,7 @@ public class User {
     }
 
     public void setPassword(String password) throws InvalidPasswordException {
-        testPasswordLength(password);
+        testPassword(password);
         this.password = password;
     }
 
@@ -111,9 +111,21 @@ public class User {
     /**
      * The password length must be between 5 and 20
      */
-    private void testPasswordLength(String password) throws InvalidPasswordException {
+    private void testPassword(String password) throws InvalidPasswordException {
         if(password.length() < 5 || password.length() > 20)
             throw new InvalidPasswordException("The password length must be between 5 and 20!");
+        char c;
+        boolean digit = false;
+        boolean upper = false;
+        boolean lower = false;
+        for(int i = 0; i < password.length(); i++) {
+            c = password.charAt(i);
+            if(Character.isDigit(c)) digit = true;
+            if(Character.isUpperCase(c)) upper = true;
+            if(Character.isLowerCase(c)) lower = true;
+        }
+        if(!digit)
+            throw new InvalidPasswordException("The password must contain upper, lower case and digit");
     }
 
     @Override

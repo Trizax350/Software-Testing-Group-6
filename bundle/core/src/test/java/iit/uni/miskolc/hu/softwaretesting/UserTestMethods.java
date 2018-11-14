@@ -15,7 +15,7 @@ public class UserTestMethods {
     private String name = "Hajnal Róbert";
     private String email = "probaemail@proba.hu";
     private String username = "Nincsfantáziám";
-    private String password = "Valami";
+    private String password = "Valami22";
 
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
@@ -80,7 +80,7 @@ public class UserTestMethods {
 
     @Test
     public void testSetPassword() throws InvalidPasswordException{
-        String password = "asdf123";
+        String password = "Asfr12";
         this.user.setPassword(password);
         assertEquals(password, this.user.getPassword());
     }
