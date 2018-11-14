@@ -1,6 +1,7 @@
 package iit.uni.miskolc.hu.softwaretesting.service;
 
 import iit.uni.miskolc.hu.softwaretesting.model.Course;
+import iit.uni.miskolc.hu.softwaretesting.model.User;
 
 import java.util.Collection;
 
@@ -12,7 +13,7 @@ public interface ManageCoursesInterface {
     Collection<Course> getAllCourse();
     Collection<Course> getAllCourseByRecommendedSemester(int semester);
     Collection<Course> getAllCourseByCredits(int credits);
-    Collection<Course> getAllCourseByUser(String user);
+    Collection<Course> getAllCourseByUser(User user);
     Collection<Course> findCourseByName(String name);
 
 }

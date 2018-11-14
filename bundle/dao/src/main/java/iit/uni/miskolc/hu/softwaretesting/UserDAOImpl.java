@@ -33,7 +33,6 @@ public class UserDAOImpl implements UserDAO {
                 break;
             }
         }
-
     }
 
     @Override
@@ -61,14 +60,5 @@ public class UserDAOImpl implements UserDAO {
     public Collection<User> searchAllUserWithOpenRequest() {
         return users;
     }
-
-    /*
-    void createUser(User user);
-    void modifyUser(User user);
-    void removeUser(User user);
-    Collection<User> searchAllUser();
-    Collection<User> searchAllUserByCourse(String course);
-    Collection<User> searchAllUserWithOpenRequest();
-     */
 
 }
