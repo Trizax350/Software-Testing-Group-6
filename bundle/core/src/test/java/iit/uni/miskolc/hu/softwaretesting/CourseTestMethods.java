@@ -10,6 +10,7 @@ import org.junit.rules.ExpectedException;
 import static org.junit.Assert.assertEquals;
 
 public class CourseTestMethods {
+
     private Course course;
     private String name = "Course 1";
     private int credits = 5;

@@ -1,17 +1,15 @@
 package iit.uni.miskolc.hu.softwaretesting.dao;
 
-import iit.uni.miskolc.hu.softwaretesting.exceptions.CourseNotFoundException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.UserNotFoundException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
 import iit.uni.miskolc.hu.softwaretesting.model.Request;
 
 import java.util.Collection;
 
 public interface RequestDAO {
 
-    void makeRequest(Request request);
-    void modifyRequest(Request request);
-    void removeRequest(Request request);
+    void makeRequest(Request request) throws RequestAlreadyExistsException;
+    void modifyRequest(Request request) throws NotFoundException;
+    void removeRequest(Request request) throws NotFoundException;
     Collection<Request> searchAllRequest();
     Collection<Request> searchAllRequestByType(String type);
     Collection<Request> searchAllRequestByStatus(String status);

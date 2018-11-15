@@ -1,9 +1,7 @@
 package iit.uni.miskolc.hu.softwaretesting;
 
 import iit.uni.miskolc.hu.softwaretesting.dao.RequestDAO;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.CourseNotFoundException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.UserNotFoundException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
 import iit.uni.miskolc.hu.softwaretesting.model.Request;
 
 import java.util.ArrayList;
@@ -19,28 +17,42 @@ public class RequestDAOImpl implements RequestDAO {
     }
 
     @Override
-    public void makeRequest(Request request) {
+    public void makeRequest(Request request) throws RequestAlreadyExistsException {
+        int id = request.getId();
+        for(int i = 0; i < requests.size(); i++) {
+            if(id == requests.get(i).getId()) {
+                throw new RequestAlreadyExistsException("Ezzel az azonosítóval már létezik kérvény");
+            }
+        }
         requests.add(request);
     }
 
     @Override
-    public void modifyRequest(Request request) {
+    public void modifyRequest(Request request) throws NotFoundException {
+        boolean found = false;
         int id = request.getId();
         for(int i = 0; i < requests.size(); i++) {
             if(id == requests.get(i).getId()) {
                 requests.set(i, request);
+                found = true;
             }
         }
+        if(!found)
+            throw new NotFoundException("Nem létezik ilyen kérvény");
     }
 
     @Override
-    public void removeRequest(Request request) {
+    public void removeRequest(Request request) throws NotFoundException {
+        boolean found = false;
         int id = request.getId();
         for(int i = 0; i < requests.size(); i++) {
             if(id == requests.get(i).getId()) {
+                found = true;
                 requests.remove(i);
             }
         }
+        if(!found)
+            throw new NotFoundException("Nem létezik ilyen kérvény");
     }
 
     @Override

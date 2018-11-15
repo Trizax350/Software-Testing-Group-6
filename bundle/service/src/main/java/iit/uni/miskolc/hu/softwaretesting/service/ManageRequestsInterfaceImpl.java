@@ -15,12 +15,12 @@ public class ManageRequestsInterfaceImpl implements ManageRequestsInterface{
     }
 
     @Override
-    public void sendRequest(Request request) {
+    public void sendRequest(Request request) throws RequestAlreadyExistsException {
         requestDAO.makeRequest(request);
     }
 
     @Override
-    public void updateRequest(Request request) throws RequestAlreadyClosedException {
+    public void updateRequest(Request request) throws NotFoundException {
         requestDAO.modifyRequest(request);
     }
 
