@@ -8,7 +8,7 @@ import java.util.Collection;
 
 public interface ManageRequestsInterface {
 
-    void sendRequest(Request request) throws ComplainAlreadyOpenException;
+    void sendRequest(Request request);
     void updateRequest(Request request) throws RequestAlreadyClosedException;
     void deleteRequest(Request request) throws NotFoundException;
     Collection<Request> getAllRequest();
