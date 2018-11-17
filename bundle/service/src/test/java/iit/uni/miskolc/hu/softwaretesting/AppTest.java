@@ -1,4 +1,4 @@
-package bundle.service.src.test.java.iit.uni.miskolc.hu.softwaretesting;
+package iit.uni.miskolc.hu.softwaretesting;
 
 import org.junit.Test;
 

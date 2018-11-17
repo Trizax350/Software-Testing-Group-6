@@ -20,7 +20,7 @@ public class CourseDAOImplTest {
     }
 
     @Test
-    public void testCreateCoruse(){
+    public void testCreateCoruse() throws Exception {
         Course course1 = new Course("Operációs rendszerek", 5, 2);
         courseDAO.createCourse(course1);
 
@@ -32,7 +32,7 @@ public class CourseDAOImplTest {
     }
 
     @Test
-    public void testModifyCourse(){
+    public void testModifyCourse() throws Exception{
         Course course = new Course("Szoftvertesztelés", 2, 5);
         courseDAO.createCourse(course);
 
@@ -41,7 +41,7 @@ public class CourseDAOImplTest {
     }
 
     @Test
-    public void testRemoveCourse(){
+    public void testRemoveCourse() throws Exception {
         Course course = new Course("Analízis II.", 5, 2);
         courseDAO.createCourse(course);
         courseDAO.removeCourse(course);
