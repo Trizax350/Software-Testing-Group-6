@@ -3,6 +3,7 @@ package iit.uni.miskolc.hu.softwaretesting;
 import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
 import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
 import iit.uni.miskolc.hu.softwaretesting.model.Complain;
+import iit.uni.miskolc.hu.softwaretesting.model.Complain.ComplainStatus;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -14,6 +15,7 @@ public class ComplainTestMethods {
     private Complain complain;
     private int id = 1;
     private String description = "Desc";
+    private ComplainStatus complainStatus = ComplainStatus.ACCEPTED;
     private int reqID = 1;
 
     @Rule
@@ -22,6 +24,7 @@ public class ComplainTestMethods {
     @Before
     public void createComplain() throws InvalidIDValueException, EmptyFieldException {
         complain = new Complain(id, description, reqID);
+        complain.setComplainStatus(complainStatus);
     }
 
     @Test
@@ -46,6 +49,17 @@ public class ComplainTestMethods {
         String desc = "asdfg";
         this.complain.setDescription(desc);
         assertEquals(desc, this.complain.getDescription());
+    }
+
+    @Test
+    public void testGetStatus() {
+        assertEquals(complain.getComplainStatus(), this.complainStatus);
+    }
+
+    @Test
+    public void testSetStatus() {
+        complain.setComplainStatus(ComplainStatus.REJECTED);
+        assertEquals(complain.getComplainStatus(), ComplainStatus.REJECTED);
     }
 
 }

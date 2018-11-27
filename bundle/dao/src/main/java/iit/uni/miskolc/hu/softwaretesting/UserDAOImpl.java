@@ -1,10 +1,7 @@
 package iit.uni.miskolc.hu.softwaretesting;
 
 import iit.uni.miskolc.hu.softwaretesting.dao.UserDAO;
-import iit.uni.miskolc.hu.softwaretesting.model.Administrator;
-import iit.uni.miskolc.hu.softwaretesting.model.Student;
-import iit.uni.miskolc.hu.softwaretesting.model.Teacher;
-import iit.uni.miskolc.hu.softwaretesting.model.User;
+import iit.uni.miskolc.hu.softwaretesting.model.*;
 
 import java.util.ArrayList;
 import java.util.Collection;

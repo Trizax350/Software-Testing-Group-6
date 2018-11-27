@@ -2,7 +2,17 @@ package iit.uni.miskolc.hu.softwaretesting.model;
 
 import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Request {
+
+    public enum Forwarded {
+        FORWARDED, NOT_FORWARDED
+    }
+
+    private static ArrayList<String> formTypes = new ArrayList<>(Arrays.asList("Take course", "Revise exam", "Change group"));
+
     private int id;
     private String priority;
     private String type;
@@ -10,8 +20,9 @@ public class Request {
     private String reference_to_the_Course;
     private int referenceToUser;
     private String status;
+    private Forwarded forwarded = Forwarded.NOT_FORWARDED;
 
-    public Request(int id, String priority, String type, String description, String reference_to_the_Course, int referenceToUser, String status) throws InvalidIDValueException, EmptyFieldException {
+    public Request(int id, String priority, String type, String description, String reference_to_the_Course, int referenceToUser, String status) throws InvalidIDValueException, InvalidFormTypeException, EmptyFieldException {
         testRequestID(id);
         testRequestPriority(priority);
         testRequestType(type);
@@ -51,7 +62,7 @@ public class Request {
         return type;
     }
 
-    public void setType(String type) throws EmptyFieldException {
+    public void setType(String type) throws EmptyFieldException, InvalidFormTypeException {
         testRequestType(type);
         this.type = type;
     }
@@ -90,6 +101,24 @@ public class Request {
         this.status = status;
     }
 
+    public Forwarded getForwarded() {
+        return forwarded;
+    }
+
+    public void setForwarded(Forwarded forwarded) {
+        this.forwarded = forwarded;
+    }
+
+    public void addFormType(String type) {
+        formTypes.add(type);
+    }
+
+    public void removeFormType(String type) {
+        for(int i = 0; i < formTypes.size(); i++) {
+            if(type.equals(formTypes.get(i))) formTypes.remove(i);
+        }
+    }
+
     /**
      * The id cant be lower than 1
      */
@@ -109,9 +138,16 @@ public class Request {
     /**
      * The type cant be empty
      */
-    private void testRequestType(String type) throws EmptyFieldException {
+    private void testRequestType(String type) throws EmptyFieldException, InvalidFormTypeException {
         if(type.length() < 1)
             throw new EmptyFieldException("The type can't be empty!");
+
+        boolean validType = false;
+        for(int i = 0; i < formTypes.size(); i++) {
+            if(type.equals(formTypes.get(i))) validType = true;
+        }
+        if(!validType)
+            throw new InvalidFormTypeException("This type isn't exist");
     }
 
     /**
@@ -143,16 +179,17 @@ public class Request {
             throw new EmptyFieldException("The status can't be empty!");
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Request{" +
                 "id=" + id +
                 ", priority='" + priority + '\'' +
                 ", type='" + type + '\'' +
                 ", description='" + description + '\'' +
                 ", reference_to_the_Course='" + reference_to_the_Course + '\'' +
-                ", referenceToUSer='" + referenceToUser + '\'' +
+                ", referenceToUser=" + referenceToUser +
                 ", status='" + status + '\'' +
+                ", forwarded=" + forwarded +
                 '}';
     }
 }

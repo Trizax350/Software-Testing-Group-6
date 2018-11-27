@@ -1,8 +1,10 @@
 package iit.uni.miskolc.hu.softwaretesting;
 
+import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidFormTypeException;
 import iit.uni.miskolc.hu.softwaretesting.model.Request;
 import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
 import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
+import iit.uni.miskolc.hu.softwaretesting.model.Request.Forwarded;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.assertEquals;
@@ -12,14 +14,14 @@ public class RequestTestMethods {
     private Request request;
     private int id=11;
     private String priority="Low";
-    private String type="Example";
+    private String type="Revise exam";
     private String description="Desc";
     private String reference_to_the_Course="Example";
     private int referenceToUser=1;
     private String status="Closed";
 
     @Before
-    public void setUp() throws EmptyFieldException, InvalidIDValueException{
+    public void setUp() throws EmptyFieldException, InvalidIDValueException, InvalidFormTypeException {
             request = new Request(this.id, this.priority, this.type, this.description, this.reference_to_the_Course, this.referenceToUser, this.status);
     }
 
@@ -51,9 +53,9 @@ public class RequestTestMethods {
     }
 
     @Test
-    public void testSetType() throws EmptyFieldException{
-        request.setType("Example2");
-        assertEquals(request.getType(), "Example2");
+    public void testSetType() throws EmptyFieldException, InvalidFormTypeException {
+        request.setType("Take course");
+        assertEquals(request.getType(), "Take course");
     }
 
     @Test
@@ -98,6 +100,17 @@ public class RequestTestMethods {
     public void testSetStatus() throws EmptyFieldException{
         request.setStatus("Open");
         assertEquals(request.getStatus(), "Open");
+    }
+
+    @Test
+    public void testGetForwarded() {
+        assertEquals(request.getForwarded(), Forwarded.NOT_FORWARDED);
+    }
+
+    @Test
+    public void testSetForwarded() {
+        request.setForwarded(Forwarded.FORWARDED);
+        assertEquals(request.getForwarded(), Forwarded.FORWARDED);
     }
 
 }

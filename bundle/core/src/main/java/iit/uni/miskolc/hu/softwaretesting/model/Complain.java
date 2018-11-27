@@ -3,8 +3,14 @@ package iit.uni.miskolc.hu.softwaretesting.model;
 import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
 
 public class Complain {
+
+    public enum ComplainStatus {
+        ACCEPTED, REJECTED
+    }
+
     private int id;
     private String description;
+    private ComplainStatus complainStatus;
     private int req_id;
 
     public Complain(int id, String description, int req_id) throws InvalidIDValueException, EmptyFieldException {
@@ -54,11 +60,20 @@ public class Complain {
             throw new EmptyFieldException("Description can't be empty");
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    public ComplainStatus getComplainStatus() {
+        return complainStatus;
+    }
+
+    public void setComplainStatus(ComplainStatus complainStatus) {
+        this.complainStatus = complainStatus;
+    }
+
+    @Override
+    public String toString() {
         return "Complain{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
+                ", complainStatus=" + complainStatus +
                 ", req_id=" + req_id +
                 '}';
     }
