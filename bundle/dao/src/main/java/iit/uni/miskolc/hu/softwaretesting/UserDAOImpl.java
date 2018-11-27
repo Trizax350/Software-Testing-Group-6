@@ -1,18 +1,25 @@
 package iit.uni.miskolc.hu.softwaretesting;
 
+import iit.uni.miskolc.hu.softwaretesting.dao.CourseDAO;
 import iit.uni.miskolc.hu.softwaretesting.dao.UserDAO;
 import iit.uni.miskolc.hu.softwaretesting.model.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 public class UserDAOImpl implements UserDAO {
 
     private ArrayList<User> users = new ArrayList<>();
 
+    CourseDAOImpl courseDAOImpl = new CourseDAOImpl();
+
+    private ArrayList<Course> allCourse = courseDAOImpl.getCourses();
+    private ArrayList<Course> courses1 = new ArrayList<>(Arrays.asList(allCourse.get(0)));
+
     public UserDAOImpl() throws Exception {
-        users.add(new Teacher(1, "Tanár bá", "tanar@email", "tanar1", "Tanar1", "Fizika"));
-        users.add(new Student(2, "Valami diák", "diak@email", "diak1", "Diak1", Student.Status.ACTIVE));
+        users.add(new Teacher(1, "Tanár bá", "tanar@email", "tanar1", "Tanar1", "Fizika", allCourse));
+        users.add(new Student(2, "Valami diák", "diak@email", "diak1", "Diak1", Student.Status.ACTIVE, courses1));
         users.add(new Administrator(3, "Admin", "admin@email", "admin1", "Admin1"));
     }
 

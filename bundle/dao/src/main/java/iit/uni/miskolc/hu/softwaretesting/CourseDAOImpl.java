@@ -17,6 +17,10 @@ public class CourseDAOImpl implements CourseDAO {
         courses.add(new Course("Java programozás", 5, 4));
     }
 
+    public ArrayList<Course> getCourses() {
+        return courses;
+    }
+
     @Override
     public void createCourse(Course course) {
         courses.add(course);
