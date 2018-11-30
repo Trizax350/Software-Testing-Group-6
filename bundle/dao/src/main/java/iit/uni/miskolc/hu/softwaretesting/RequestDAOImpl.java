@@ -3,6 +3,8 @@ package iit.uni.miskolc.hu.softwaretesting;
 import iit.uni.miskolc.hu.softwaretesting.dao.RequestDAO;
 import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
 import iit.uni.miskolc.hu.softwaretesting.model.Request;
+import iit.uni.miskolc.hu.softwaretesting.model.Request.Status;
+import iit.uni.miskolc.hu.softwaretesting.model.Request.Forwarded;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,8 +14,8 @@ public class RequestDAOImpl implements RequestDAO {
     private ArrayList<Request> requests = new ArrayList<>();
 
     public RequestDAOImpl() throws Exception {
-        requests.add(new Request(1, "low", "Kurzus felvétel", "desc", "Fizika",2, "Open"));
-        requests.add(new Request(2, "medium", " Kurzus leadás", "desc", "Java programozás",2, "Closed"));
+        requests.add(new Request(1, "low", "Take course", "desc", "Fizika",2));
+        requests.add(new Request(2, "medium", "Revise exam", "desc", "Java programozás",2));
     }
 
     @Override
@@ -56,6 +58,13 @@ public class RequestDAOImpl implements RequestDAO {
     }
 
     @Override
+    public void forwardRequest(Request request) throws RequestAlreadyForwardedException {
+        if(request.getForwarded() == Forwarded.FORWARDED)
+            throw new RequestAlreadyForwardedException("A kérvény már továbbítva van az adminisztrátoroknak");
+        else request.setForwarded(Forwarded.FORWARDED);
+    }
+
+    @Override
     public Collection<Request> searchAllRequest() {
         return requests;
     }
@@ -72,10 +81,10 @@ public class RequestDAOImpl implements RequestDAO {
     }
 
     @Override
-    public Collection<Request> searchAllRequestByStatus(String status) {
+    public Collection<Request> searchAllRequestByStatus(Status status) {
         ArrayList<Request> results = new ArrayList<>();
         for(int i = 0; i < requests.size(); i++) {
-            if(status.equals(requests.get(i).getStatus())) {
+            if(status == requests.get(i).getStatus()) {
                 results.add(requests.get(i));
             }
         }

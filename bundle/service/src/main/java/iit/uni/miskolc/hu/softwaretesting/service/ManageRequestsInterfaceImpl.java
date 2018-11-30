@@ -3,6 +3,7 @@ package iit.uni.miskolc.hu.softwaretesting.service;
 import iit.uni.miskolc.hu.softwaretesting.dao.RequestDAO;
 import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
 import iit.uni.miskolc.hu.softwaretesting.model.Request;
+import iit.uni.miskolc.hu.softwaretesting.model.Request.Status;
 
 import java.util.Collection;
 
@@ -30,6 +31,11 @@ public class ManageRequestsInterfaceImpl implements ManageRequestsInterface{
     }
 
     @Override
+    public void forwardRequest(Request request) throws RequestAlreadyForwardedException {
+
+    }
+
+    @Override
     public Collection<Request> getAllRequest() {
         return requestDAO.searchAllRequest();
     }
@@ -40,7 +46,7 @@ public class ManageRequestsInterfaceImpl implements ManageRequestsInterface{
     }
 
     @Override
-    public Collection<Request> getAllRequestByStatus(String status) {
+    public Collection<Request> getAllRequestByStatus(Status status) {
         return requestDAO.searchAllRequestByStatus(status);
     }
 

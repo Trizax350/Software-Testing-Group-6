@@ -50,6 +50,14 @@ public class Complain {
         this.req_id = req_id;
     }
 
+    public ComplainStatus getComplainStatus() {
+        return complainStatus;
+    }
+
+    public void setComplainStatus(ComplainStatus complainStatus) {
+        this.complainStatus = complainStatus;
+    }
+
     private void testId(int id) throws InvalidIDValueException {
         if(id <= 0)
             throw new InvalidIDValueException("ID must be at least 1");
@@ -58,14 +66,6 @@ public class Complain {
     private void testDescription(String description) throws EmptyFieldException {
         if(description.length() < 1)
             throw new EmptyFieldException("Description can't be empty");
-    }
-
-    public ComplainStatus getComplainStatus() {
-        return complainStatus;
-    }
-
-    public void setComplainStatus(ComplainStatus complainStatus) {
-        this.complainStatus = complainStatus;
     }
 
     @Override

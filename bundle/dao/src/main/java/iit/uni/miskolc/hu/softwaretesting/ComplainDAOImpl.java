@@ -11,8 +11,8 @@ public class ComplainDAOImpl implements ComplainDAO {
     private ArrayList<Complain> complains = new ArrayList<>();
 
     public ComplainDAOImpl() throws Exception {
-        complains.add(new Complain(11, "leiras1", 1));
-        complains.add(new Complain(12, "leiras2", 2));
+        complains.add(new Complain(1, "leiras1", 1));
+        complains.add(new Complain(2, "leiras2", 2));
     }
 
     @Override

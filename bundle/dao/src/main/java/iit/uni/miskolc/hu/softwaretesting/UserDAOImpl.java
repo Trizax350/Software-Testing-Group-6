@@ -23,6 +23,10 @@ public class UserDAOImpl implements UserDAO {
         users.add(new Administrator(3, "Admin", "admin@email", "admin1", "Admin1"));
     }
 
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
     @Override
     public void createUser(User user) {
         users.add(user);

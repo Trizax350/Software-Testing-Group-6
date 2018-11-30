@@ -10,13 +10,13 @@ public class RequestConstructorTest {
 
     @Test
     public void testConstructorWithCorrectValues() throws Exception {
-        request = new Request(150,"Low","Test","Only test with correct values","Course 1",20,"Open");
+        request = new Request(150,"Low","Take course","Only test with correct values","Course 1",20);
     }
     /**
      * This test runs the constructor with empty values
      */
     @Test(expected = EmptyFieldException.class)
     public void testConstructorWithEmptyValues() throws Exception {
-        request = new Request(100,"","","","",10,"");
+        request = new Request(100,"","","","",10);
     }
 }

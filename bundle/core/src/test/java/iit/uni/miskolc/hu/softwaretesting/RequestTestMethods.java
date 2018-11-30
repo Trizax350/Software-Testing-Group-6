@@ -18,11 +18,10 @@ public class RequestTestMethods {
     private String description="Desc";
     private String reference_to_the_Course="Example";
     private int referenceToUser=1;
-    private String status="Closed";
 
     @Before
     public void setUp() throws EmptyFieldException, InvalidIDValueException, InvalidFormTypeException {
-            request = new Request(this.id, this.priority, this.type, this.description, this.reference_to_the_Course, this.referenceToUser, this.status);
+            request = new Request(this.id, this.priority, this.type, this.description, this.reference_to_the_Course, this.referenceToUser);
     }
 
     @Test
@@ -93,13 +92,13 @@ public class RequestTestMethods {
 
     @Test
     public void testGetStatus() {
-        assertEquals(request.getStatus(), this.status);
+        assertEquals(request.getStatus(), Request.Status.OPEN);
     }
 
     @Test
     public void testSetStatus() throws EmptyFieldException{
-        request.setStatus("Open");
-        assertEquals(request.getStatus(), "Open");
+        request.setStatus(Request.Status.CLOSED);
+        assertEquals(request.getStatus(), Request.Status.CLOSED);
     }
 
     @Test

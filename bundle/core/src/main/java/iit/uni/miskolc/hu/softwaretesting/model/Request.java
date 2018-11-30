@@ -11,6 +11,10 @@ public class Request {
         FORWARDED, NOT_FORWARDED
     }
 
+    public enum Status {
+        OPEN, CLOSED
+    }
+
     private static ArrayList<String> formTypes = new ArrayList<>(Arrays.asList("Take course", "Revise exam", "Change group"));
 
     private int id;
@@ -19,17 +23,16 @@ public class Request {
     private String description;
     private String reference_to_the_Course;
     private int referenceToUser;
-    private String status;
-    private Forwarded forwarded = Forwarded.NOT_FORWARDED;
+    private Status status;
+    private Forwarded forwarded;
 
-    public Request(int id, String priority, String type, String description, String reference_to_the_Course, int referenceToUser, String status) throws InvalidIDValueException, InvalidFormTypeException, EmptyFieldException {
+    public Request(int id, String priority, String type, String description, String reference_to_the_Course, int referenceToUser) throws InvalidIDValueException, InvalidFormTypeException, EmptyFieldException {
         testRequestID(id);
         testRequestPriority(priority);
         testRequestType(type);
         testRequestDescription(description);
         testRequestReferenceToTheCourse(reference_to_the_Course);
         testRequestReferenceToUser(referenceToUser);
-        testRequestStatus(status);
 
         this.id = id;
         this.priority = priority;
@@ -37,7 +40,8 @@ public class Request {
         this.description = description;
         this.reference_to_the_Course = reference_to_the_Course;
         this.referenceToUser = referenceToUser;
-        this.status = status;
+        this.status = Status.OPEN;
+        this.forwarded = Forwarded.NOT_FORWARDED;
     }
 
     public int getId() {
@@ -92,12 +96,11 @@ public class Request {
         this.referenceToUser = referenceToUser;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) throws EmptyFieldException {
-        testRequestStatus(status);
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -169,14 +172,6 @@ public class Request {
     private void testRequestReferenceToUser(int referenceToUser) throws EmptyFieldException {
         if(referenceToUser < 1)
             throw new EmptyFieldException("The reference to the course field can't be empty!");
-    }
-
-    /**
-     * The status cant be empty
-     */
-    private void testRequestStatus(String status) throws EmptyFieldException {
-        if(status.length() < 1)
-            throw new EmptyFieldException("The status can't be empty!");
     }
 
     @Override
