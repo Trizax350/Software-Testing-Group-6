@@ -20,7 +20,7 @@ public class CourseDAOImplTest {
     }
 
     @Test
-    public void testCreateCoruse() throws Exception {
+    public void testCreateCourse() throws Exception {
         Course course1 = new Course("Operációs rendszerek", 5, 2);
         courseDAO.createCourse(course1);
 

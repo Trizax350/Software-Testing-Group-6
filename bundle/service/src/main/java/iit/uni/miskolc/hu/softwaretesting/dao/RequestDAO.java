@@ -8,10 +8,12 @@ import java.util.Collection;
 
 public interface RequestDAO {
 
-    void makeRequest(Request request) throws RequestAlreadyExistsException;
+    void makeRequest(Request request) throws AlreadyExistsException;
     void modifyRequest(Request request) throws NotFoundException;
     void removeRequest(Request request) throws NotFoundException;
-    void forwardRequest(Request request) throws RequestAlreadyForwardedException;
+    void forwardRequest(Request request) throws RequestAlreadyForwardedException, NotFoundException;
+    void createFormType(String type) throws AlreadyExistsException;
+    void deleteFormType(String type) throws InvalidFormTypeException;
     Collection<Request> searchAllRequest();
     Collection<Request> searchAllRequestByType(String type);
     Collection<Request> searchAllRequestByStatus(Status status);

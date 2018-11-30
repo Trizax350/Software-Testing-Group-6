@@ -1,11 +1,14 @@
 package iit.uni.miskolc.hu.softwaretesting.model;
 
 import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
+import org.omg.CORBA.DynAnyPackage.Invalid;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Request {
+
+    public static ArrayList<String> formTypes = new ArrayList<>(Arrays.asList("Take course", "Revise exam", "Change group"));
 
     public enum Forwarded {
         FORWARDED, NOT_FORWARDED
@@ -14,8 +17,6 @@ public class Request {
     public enum Status {
         OPEN, CLOSED
     }
-
-    private static ArrayList<String> formTypes = new ArrayList<>(Arrays.asList("Take course", "Revise exam", "Change group"));
 
     private int id;
     private String priority;
@@ -112,14 +113,20 @@ public class Request {
         this.forwarded = forwarded;
     }
 
-    public void addFormType(String type) {
+    public static void addFormType(String type) throws AlreadyExistsException {
+        if(formTypes.contains(type)) throw new AlreadyExistsException("Ez a kérvénytípus már létezik");
         formTypes.add(type);
     }
 
-    public void removeFormType(String type) {
+    public static void removeFormType(String type) throws InvalidFormTypeException {
+        boolean found = false;
         for(int i = 0; i < formTypes.size(); i++) {
-            if(type.equals(formTypes.get(i))) formTypes.remove(i);
+            if(type.equals(formTypes.get(i))) {
+                formTypes.remove(i);
+                found = true;
+            }
         }
+        if(!found) throw new InvalidFormTypeException("Ilyen kérvénytípus nem létezik");
     }
 
     /**

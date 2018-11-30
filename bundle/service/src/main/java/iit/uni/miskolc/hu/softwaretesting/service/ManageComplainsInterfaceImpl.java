@@ -15,18 +15,28 @@ public class ManageComplainsInterfaceImpl implements ManageComplainsInterface {
     }
 
     @Override
-    public void makeComplain(Complain complain) {
+    public void makeComplain(Complain complain) throws AlreadyExistsException {
         complainDAO.createComplain(complain);
     }
 
     @Override
-    public void updateComplain(Complain complain) {
+    public void updateComplain(Complain complain) throws  NotFoundException {
         complainDAO.modifyComplain(complain);
     }
 
     @Override
-    public void deleteComplain(Complain complain) {
+    public void deleteComplain(Complain complain) throws NotFoundException{
         complainDAO.removeComplain(complain);
+    }
+
+    @Override
+    public void acceptComplain(Complain complain) throws ComplainAlreadyClosedException, NotFoundException {
+        complainDAO.acceptComplain(complain);
+    }
+
+    @Override
+    public void rejectComplain(Complain complain) throws ComplainAlreadyClosedException, NotFoundException {
+        complainDAO.rejectComplain(complain);
     }
 
     @Override

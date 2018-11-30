@@ -7,6 +7,7 @@ import iit.uni.miskolc.hu.softwaretesting.model.Request.Status;
 import iit.uni.miskolc.hu.softwaretesting.model.Request.Forwarded;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 public class RequestDAOImpl implements RequestDAO {
@@ -19,11 +20,11 @@ public class RequestDAOImpl implements RequestDAO {
     }
 
     @Override
-    public void makeRequest(Request request) throws RequestAlreadyExistsException {
+    public void makeRequest(Request request) throws AlreadyExistsException {
         int id = request.getId();
         for(int i = 0; i < requests.size(); i++) {
             if(id == requests.get(i).getId()) {
-                throw new RequestAlreadyExistsException("Ezzel az azonosítóval már létezik kérvény");
+                throw new AlreadyExistsException("Ezzel az azonosítóval már létezik kérvény");
             }
         }
         requests.add(request);
@@ -58,10 +59,28 @@ public class RequestDAOImpl implements RequestDAO {
     }
 
     @Override
-    public void forwardRequest(Request request) throws RequestAlreadyForwardedException {
-        if(request.getForwarded() == Forwarded.FORWARDED)
-            throw new RequestAlreadyForwardedException("A kérvény már továbbítva van az adminisztrátoroknak");
-        else request.setForwarded(Forwarded.FORWARDED);
+    public void forwardRequest(Request request) throws RequestAlreadyForwardedException, NotFoundException {
+        int id = request.getId();
+        boolean found = false;
+        for(Request r : requests) {
+            if(id == r.getId()) {
+                found = true;
+                if(r.getForwarded() == Forwarded.FORWARDED)
+                    throw new RequestAlreadyForwardedException("A kérvény már továbbítva van az adminisztrátoroknak");
+                else request.setForwarded(Forwarded.FORWARDED);
+            }
+        }
+        if(!found) throw new NotFoundException("Ez a kérvény nem létezik");
+    }
+
+    @Override
+    public void createFormType(String type) throws AlreadyExistsException {
+        Request.addFormType(type);
+    }
+
+    @Override
+    public void deleteFormType(String type) throws InvalidFormTypeException {
+        Request.removeFormType(type);
     }
 
     @Override

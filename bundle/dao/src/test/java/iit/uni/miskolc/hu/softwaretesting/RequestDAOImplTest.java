@@ -1,6 +1,5 @@
 package iit.uni.miskolc.hu.softwaretesting;
 
-import iit.uni.miskolc.hu.softwaretesting.exceptions.RequestAlreadyExistsException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

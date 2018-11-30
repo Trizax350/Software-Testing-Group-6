@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class LoginDAOImpl implements LoginDAO {
 
-    UserDAOImpl userDAOImpl;
+    private UserDAOImpl userDAOImpl;
 
     @Override
     public boolean checkCredentials(String username, String password) throws LoginFailed {

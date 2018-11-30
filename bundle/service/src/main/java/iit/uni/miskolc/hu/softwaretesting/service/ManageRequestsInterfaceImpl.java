@@ -16,7 +16,7 @@ public class ManageRequestsInterfaceImpl implements ManageRequestsInterface{
     }
 
     @Override
-    public void sendRequest(Request request) throws RequestAlreadyExistsException {
+    public void sendRequest(Request request) throws AlreadyExistsException {
         requestDAO.makeRequest(request);
     }
 
@@ -31,8 +31,18 @@ public class ManageRequestsInterfaceImpl implements ManageRequestsInterface{
     }
 
     @Override
-    public void forwardRequest(Request request) throws RequestAlreadyForwardedException {
+    public void forwardRequest(Request request) throws RequestAlreadyForwardedException, NotFoundException {
+        requestDAO.forwardRequest(request);
+    }
 
+    @Override
+    public void addFormType(String type) throws AlreadyExistsException {
+        requestDAO.createFormType(type);
+    }
+
+    @Override
+    public void removeFormType(String type) throws InvalidFormTypeException {
+        requestDAO.deleteFormType(type);
     }
 
     @Override

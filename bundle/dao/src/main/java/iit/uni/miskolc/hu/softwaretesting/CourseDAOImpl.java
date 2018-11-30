@@ -2,6 +2,8 @@ package iit.uni.miskolc.hu.softwaretesting;
 
 import com.sun.xml.internal.bind.v2.TODO;
 import iit.uni.miskolc.hu.softwaretesting.dao.CourseDAO;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.AlreadyExistsException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.NotFoundException;
 import iit.uni.miskolc.hu.softwaretesting.model.Course;
 import iit.uni.miskolc.hu.softwaretesting.model.User;
 
@@ -22,30 +24,43 @@ public class CourseDAOImpl implements CourseDAO {
     }
 
     @Override
-    public void createCourse(Course course) {
+    public void createCourse(Course course) throws AlreadyExistsException {
+        String name = course.getName();
+
+        for(Course c : courses) {
+            if(name.equals(c.getName())) throw new AlreadyExistsException("Ez  kurzus már létezik");
+        }
         courses.add(course);
     }
 
     @Override
-    public void modifyCourse(Course course) {
+    public void modifyCourse(Course course) throws NotFoundException {
         String name = course.getName();
+        boolean found = false;
+
         for(int i = 0; i < courses.size(); i++) {
             if(name.equals(courses.get(i).getName())) {
+                found = true;
                 courses.set(i, course);
                 break;
             }
         }
+        if(!found) throw new NotFoundException("Nem létezik ilyen kurzus");
     }
 
     @Override
-    public void removeCourse(Course course) {
+    public void removeCourse(Course course) throws NotFoundException {
         String name = course.getName();
+        boolean found = false;
+
         for(int i = 0; i < courses.size(); i++) {
             if(name.equals(courses.get(i).getName())) {
+                found = true;
                 courses.remove(i);
                 break;
             }
         }
+        if(!found) throw new NotFoundException("Nem létezik ilyen kurzus");
     }
 
     @Override

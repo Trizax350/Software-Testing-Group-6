@@ -1,6 +1,8 @@
 package iit.uni.miskolc.hu.softwaretesting.service;
 
 import iit.uni.miskolc.hu.softwaretesting.dao.CourseDAO;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.AlreadyExistsException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.NotFoundException;
 import iit.uni.miskolc.hu.softwaretesting.model.Course;
 import iit.uni.miskolc.hu.softwaretesting.model.User;
 
@@ -15,17 +17,17 @@ public class ManageCoursesInterfaceImpl implements ManageCoursesInterface {
     }
 
     @Override
-    public void addCourse(Course course) {
+    public void addCourse(Course course) throws AlreadyExistsException {
         courseDAO.createCourse(course);
     }
 
     @Override
-    public void updateCourse(Course course) {
+    public void updateCourse(Course course) throws NotFoundException {
         courseDAO.modifyCourse(course);
     }
 
     @Override
-    public void deleteCourse(Course course) {
+    public void deleteCourse(Course course) throws NotFoundException {
         courseDAO.removeCourse(course);
     }
 
