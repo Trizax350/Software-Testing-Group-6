@@ -9,6 +9,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doReturn;
+
 public class ManageRequestsInterfaceImplTest {
 
     @Mock
@@ -65,37 +70,65 @@ public class ManageRequestsInterfaceImplTest {
     }
 
     @Test
-    public void testGetAllRequest(){
-        requestManager.getAllRequest();
+    public void testGetAllRequest() throws Exception{
+        ArrayList<Request> requests = new ArrayList<>();
+        requests.add(new Request(1,"High","Take course", "Desc1", "Számítógép hálózatok", 1));
+
+        doReturn(requests).when(requestDAOMock).searchAllRequest();
+        assertEquals(requests, requestManager.getAllRequest());
     }
 
     @Test
-    public void testGetAllRequestByType(){
-        requestManager.getAllRequestByType("Take course");
+    public void testGetAllRequestByType() throws Exception{
+        ArrayList<Request> requests = new ArrayList<>();
+        requests.add(new Request(1,"High","Take course", "Desc1", "Számítógép hálózatok", 1));
+
+        doReturn(requests).when(requestDAOMock).searchAllRequestByType("Take course");
+        assertEquals(requests, requestManager.getAllRequestByType("Take course"));
     }
 
     @Test
-    public void testGetAllRequestByStatus(){
-        requestManager.getAllRequestByStatus(Request.Status.CLOSED);
+    public void testGetAllRequestByStatus() throws Exception{
+        ArrayList<Request> requests = new ArrayList<>();
+        requests.add(new Request(1,"High","Take course", "Desc1", "Számítógép hálózatok", 1));
+
+        doReturn(requests).when(requestDAOMock).searchAllRequestByStatus(Request.Status.CLOSED);
+        assertEquals(requests, requestManager.getAllRequestByStatus(Request.Status.CLOSED));
     }
 
     @Test
-    public void testGetAllRequestWithComplain() {
-        requestManager.getAllRequestWithComplain();
+    public void testGetAllRequestWithComplain() throws Exception{
+        ArrayList<Request> requests = new ArrayList<>();
+        requests.add(new Request(1,"High","Take course", "Desc1", "Számítógép hálózatok", 1));
+
+        doReturn(requests).when(requestDAOMock).searchAllRequestWithComplain();
+        assertEquals(requests, requestManager.getAllRequestWithComplain());
     }
 
     @Test
     public void testGetAllRequestByCourse() throws Exception{
-        requestManager.getAllRequestByCourse("Számítógép hálózatok");
+        ArrayList<Request> requests = new ArrayList<>();
+        requests.add(new Request(1,"High","Take course", "Desc1", "Számítógép hálózatok", 1));
+
+        doReturn(requests).when(requestDAOMock).searchAllRequestByCourse("Számítógép hálózatok");
+        assertEquals(requests, requestManager.getAllRequestByCourse("Számítógép hálózatok"));
     }
 
     @Test
     public void testGetAllRequestByUser() throws Exception{
-        requestManager.getAllRequestByUser(1);
+        ArrayList<Request> requests = new ArrayList<>();
+        requests.add(new Request(1,"High","Take course", "Desc1", "Számítógép hálózatok", 1));
+
+        doReturn(requests).when(requestDAOMock).searchAllRequestByUser(1);
+        assertEquals(requests, requestManager.getAllRequestByUser(1));
     }
 
     @Test
     public void testFindRequestById() throws Exception{
-        requestManager.findRequestById(4);
+        ArrayList<Request> requests = new ArrayList<>();
+        requests.add(new Request(1,"High","Take course", "Desc1", "Számítógép hálózatok", 1));
+
+        doReturn(requests).when(requestDAOMock).searchRequestById(1);
+        assertEquals(requests, requestManager.findRequestById(1));
     }
 }
