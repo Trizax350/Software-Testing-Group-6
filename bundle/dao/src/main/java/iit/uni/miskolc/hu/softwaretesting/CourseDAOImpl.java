@@ -1,6 +1,5 @@
 package iit.uni.miskolc.hu.softwaretesting;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import iit.uni.miskolc.hu.softwaretesting.dao.CourseDAO;
 import iit.uni.miskolc.hu.softwaretesting.exceptions.AlreadyExistsException;
 import iit.uni.miskolc.hu.softwaretesting.exceptions.NotFoundException;

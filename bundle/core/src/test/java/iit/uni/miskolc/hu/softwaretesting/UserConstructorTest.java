@@ -10,7 +10,7 @@ public class UserConstructorTest {
 
     @Test
     public void testConstructorWithCorrectValues() throws EmptyFieldException, InvalidIDValueException, InvalidPasswordException, InvalidEmailException {
-        user = new User(1, "Teszt Elek", "teszt@mail", "testelek2", "asdfg12");
+        user = new User(1, "Teszt Elek", "teszt@mail", "testelek2", "Adfg12");
     }
 
     /**
@@ -46,7 +46,7 @@ public class UserConstructorTest {
      */
     @Test(expected = InvalidPasswordException.class)
     public void testConstructorWithTooLessPassword() throws InvalidPasswordException, InvalidIDValueException, EmptyFieldException, InvalidEmailException {
-        user = new User(1,"Robert","trizax350@gmail.com","Trizax","ASdf45");
+        user = new User(1,"Robert","trizax350@gmail.com","Trizax","AS45");
     }
 
     /**

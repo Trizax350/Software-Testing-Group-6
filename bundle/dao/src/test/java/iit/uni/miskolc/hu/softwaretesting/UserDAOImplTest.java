@@ -20,25 +20,25 @@ public class UserDAOImplTest {
 
     @Test
     public void testCreateUser() throws Exception {
-        User user1 = new User(1, "Kiss János", "kissjanos@gmail.com", "janoskiss", "jelszo");
+        User user1 = new User(5, "Kis János", "kissjanos@gmail.com", "janoskiss", "Jelszo23");
         userDAO.createUser(user1);
 
-        User user2 = new User(2, "Nagy Ferenc", "nagyferenc@gmail.com", "ferencnagy", "asd123");
+        User user2 = new User(6, "Nagy Ferenc", "nagyferenc@gmail.com", "ferencnagy", "Asd123");
         userDAO.createUser(user2);
     }
 
     @Test
     public void testModifyUser() throws  Exception {
-        User user = new User(10, "Rónai Károly", "ronaikaroly@gmail.com", "karoly", "probajelszo");
+        User user = new User(10, "Rónai Károly", "ronaikaroly@gmail.com", "karoly", "Probajelszo1");
         userDAO.createUser(user);
 
-        User modifieduser = new User(10, "Rónai Károly", "ronaikaroly@gmail.com", "karolyronai", "tejfoloslangos");
+        User modifieduser = new User(10, "Rónai Károly", "ronaikaroly@gmail.com", "karolyronai", "Tejfoloslangos2");
         userDAO.modifyUser(modifieduser);
     }
 
     @Test
     public void testRemoveUser() throws  Exception{
-        User user = new User(94, "Sajt Péter", "sajtpeter@gmail.com", "peter", "sajtosvalami");
+        User user = new User(94, "Sajt Péter", "sajtpeter@gmail.com", "peter", "Sajtosvalami2");
         userDAO.createUser(user);
         userDAO.removeUser(user);
     }

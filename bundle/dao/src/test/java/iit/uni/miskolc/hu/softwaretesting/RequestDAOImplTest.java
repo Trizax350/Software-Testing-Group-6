@@ -29,7 +29,7 @@ public class RequestDAOImplTest {
         requestDAO.makeRequest(request);
 
         Request modifiedrequest = new Request(18, "High", "Revise exam", "Leírás2", "Fizika II.", 1);
-        requestDAO.makeRequest(modifiedrequest);
+        requestDAO.modifyRequest(modifiedrequest);
     }
 
     @Test

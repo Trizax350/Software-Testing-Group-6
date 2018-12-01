@@ -28,7 +28,7 @@ public class ComplainDAOImplTest {
         Complain complain = new Complain(15, "leiras", 1);
         complainDAO.createComplain(complain);
 
-        Complain modifiedComplain = new Complain(45, "leiras2", 1);
+        Complain modifiedComplain = new Complain(15, "leiras2", 1);
         complainDAO.modifyComplain(modifiedComplain);
     }
 
