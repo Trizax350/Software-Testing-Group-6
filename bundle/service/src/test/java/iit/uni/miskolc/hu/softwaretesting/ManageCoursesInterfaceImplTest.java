@@ -1,19 +1,25 @@
 package iit.uni.miskolc.hu.softwaretesting;
 
+import iit.uni.miskolc.hu.softwaretesting.exceptions.NotFoundException;
 import iit.uni.miskolc.hu.softwaretesting.service.ManageCoursesInterfaceImpl;
 import iit.uni.miskolc.hu.softwaretesting.model.Course;
 import iit.uni.miskolc.hu.softwaretesting.dao.CourseDAO;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
 import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doReturn;
 
 public class ManageCoursesInterfaceImplTest {
 
-    //@Mock
+    @Mock
     private CourseDAO courseDAOMock;
 
-    //@InjectMocks
+    @InjectMocks
     private ManageCoursesInterfaceImpl courseManager;
 
     public ManageCoursesInterfaceImplTest() {
@@ -22,12 +28,13 @@ public class ManageCoursesInterfaceImplTest {
 
     @Before
     public void start() throws Exception {
-        //MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.initMocks(this);
     }
 
-    @Test
-    public void testAddCourse(){
-
+    /*@Test
+    public void testAddCourse() throws Exception {
+        Course c = new Course("Java programozás", 5, 4);
+        courseManager.addCourse(c);
     }
 
     @Test
@@ -38,30 +45,46 @@ public class ManageCoursesInterfaceImplTest {
     @Test
     public void testDeleteCourse(){
 
+    }*/
+
+    @Test
+    public void testGetAllCourse() throws Exception {
+        ArrayList<Course> courses = new ArrayList<>();
+        courses.add(new Course("Programozás alapjai", 5, 1));
+
+        doReturn(courses).when(courseDAOMock).searchAllCourse();
+        assertEquals(courses, courseManager.getAllCourse());
     }
 
     @Test
-    public void testGetAllCourse(){
+    public void testGetAllCourseByRecommendedSemester() throws Exception {
+        ArrayList<Course> courses = new ArrayList<>();
+        courses.add(new Course("Programozás alapjai", 5, 1));
 
+        doReturn(courses).when(courseDAOMock).searchAllCourseByRecommendedSemester(1);
+        assertEquals(courses, courseManager.getAllCourseByRecommendedSemester(1));
     }
 
     @Test
-    public void testGetAllCourseByRecommendedSemester(){
+    public void testGetAllCourseByCredits() throws Exception {
+        ArrayList<Course> courses = new ArrayList<>();
+        courses.add(new Course("Programozás alapjai", 5, 1));
 
+        doReturn(courses).when(courseDAOMock).searchAllCourseByCredits(5);
+        assertEquals(courses, courseManager.getAllCourseByCredits(5));
     }
 
-    @Test
-    public void testGetAllCourseByCredits() {
-
-    }
-
-    @Test
+    /*@Test
     public void testGetAllCourseByUser() {
 
-    }
+    }*/
 
     @Test
-    public void testFindCourseByName() {
+    public void testFindCourseByName() throws Exception{
+        ArrayList<Course> courses = new ArrayList<>();
+        courses.add(new Course("Programozás alapjai", 5, 1));
 
+        doReturn(courses).when(courseDAOMock).searchCourseByName("Programozás alapjai");
+        assertEquals(courses, courseManager.findCourseByName("Programozás alapjai"));
     }
 }

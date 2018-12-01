@@ -5,6 +5,9 @@ import iit.uni.miskolc.hu.softwaretesting.model.Complain;
 import iit.uni.miskolc.hu.softwaretesting.service.ManageComplainsInterfaceImpl;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.util.Collection;
 
@@ -12,10 +15,10 @@ import static org.junit.Assert.assertEquals;
 
 public class ManageComplainsInterfaceImplTest {
 
-    //@Mock
+    @Mock
     private ComplainDAO complainDAOMock;
 
-    //@InjectMocks
+    @InjectMocks
     private ManageComplainsInterfaceImpl complainManager;
 
     public ManageComplainsInterfaceImplTest() {
@@ -24,7 +27,7 @@ public class ManageComplainsInterfaceImplTest {
 
     @Before
     public void start() throws Exception {
-        //MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
