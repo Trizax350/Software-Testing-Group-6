@@ -10,4 +10,58 @@ import static org.junit.Assert.assertEquals;
 
 public class ManageCoursesInterfaceImplTest {
 
+    //@Mock
+    private CourseDAO courseDAOMock;
+
+    //@InjectMocks
+    private ManageCoursesInterfaceImpl courseManager;
+
+    public ManageCoursesInterfaceImplTest() {
+        super();
+    }
+
+    @Before
+    public void start() throws Exception {
+        //MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    public void testAddCourse(){
+
+    }
+
+    @Test
+    public void testUpdateCourse(){
+
+    }
+
+    @Test
+    public void testDeleteCourse(){
+
+    }
+
+    @Test
+    public void testGetAllCourse(){
+
+    }
+
+    @Test
+    public void testGetAllCourseByRecommendedSemester(){
+
+    }
+
+    @Test
+    public void testGetAllCourseByCredits() {
+
+    }
+
+    @Test
+    public void testGetAllCourseByUser() {
+
+    }
+
+    @Test
+    public void testFindCourseByName() {
+
+    }
 }

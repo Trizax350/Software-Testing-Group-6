@@ -10,4 +10,47 @@ import static org.junit.Assert.assertEquals;
 
 public class UserInterfaceImplTest {
 
+    //@Mock
+    private UserDAO userDAOMock;
+
+    //@InjectMocks
+    private UserInterfaceImpl userManager;
+
+    public UserInterfaceImplTest() {
+        super();
+    }
+
+    @Before
+    public void start() throws Exception {
+        //MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    public void testAddUser(){
+
+    }
+
+    @Test
+    public void testUpdateUser(){
+
+    }
+
+    @Test
+    public void testDeleteUser(){
+
+    }
+
+    @Test
+    public void testGetAllUser(){
+
+    }
+
+    @Test
+    public void testGetAllUserByCourse(){
+    }
+
+    @Test
+    public void testGetAllUserWithOpenRequest(){
+
+    }
 }
