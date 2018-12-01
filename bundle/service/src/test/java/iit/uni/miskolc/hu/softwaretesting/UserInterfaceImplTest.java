@@ -1,19 +1,21 @@
 package iit.uni.miskolc.hu.softwaretesting;
 
 import iit.uni.miskolc.hu.softwaretesting.service.UserInterfaceImpl;
-import iit.uni.miskolc.hu.softwaretesting.model.User;
 import iit.uni.miskolc.hu.softwaretesting.dao.UserDAO;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.ArrayList;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
 import static org.junit.Assert.assertEquals;
 
 public class UserInterfaceImplTest {
 
-    //@Mock
+    @Mock
     private UserDAO userDAOMock;
 
-    //@InjectMocks
+    @InjectMocks
     private UserInterfaceImpl userManager;
 
     public UserInterfaceImplTest() {
@@ -22,7 +24,7 @@ public class UserInterfaceImplTest {
 
     @Before
     public void start() throws Exception {
-        //MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
