@@ -31,21 +31,28 @@ public class ManageCoursesInterfaceImplTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    /*@Test
+    @Test
     public void testAddCourse() throws Exception {
-        Course c = new Course("Java programozás", 5, 4);
-        courseManager.addCourse(c);
+        Course course = new Course("Java programozás", 5, 4);
+        courseManager.addCourse(course);
     }
 
     @Test
-    public void testUpdateCourse(){
-
+    public void testUpdateCourse() throws Exception {
+        Course course = new Course("Java programozás", 5, 4);
+        Course course2 = new Course("Java programozás", 5, 2);
+        
+        courseManager.addCourse(course);
+        courseManager.updateCourse(course2);
     }
 
     @Test
-    public void testDeleteCourse(){
-
-    }*/
+    public void testDeleteCourse() throws Exception{
+        Course course = new Course("Java programozás", 5, 4);
+        
+        courseManager.addCourse(course);
+        courseManager.deleteCourse(course);
+    }
 
     @Test
     public void testGetAllCourse() throws Exception {
@@ -74,10 +81,15 @@ public class ManageCoursesInterfaceImplTest {
         assertEquals(courses, courseManager.getAllCourseByCredits(5));
     }
 
-    /*@Test
+    @Test
     public void testGetAllCourseByUser() {
+        ArrayList<Course> courses = new ArrayList<>();
+        courses.add(new Course("Programozás alapjai", 5, 1));
 
-    }*/
+        doReturn(courses).when(courseDAOMock).searchAllCourseByUser("user1");
+        assertEquals(courses, courseManager.getAllCourseByUser("user1"));
+
+    }
 
     @Test
     public void testFindCourseByName() throws Exception{
