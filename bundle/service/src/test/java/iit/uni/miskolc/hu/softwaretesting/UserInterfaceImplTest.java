@@ -56,7 +56,7 @@ public class UserInterfaceImplTest {
     @Test
     public void testGetAllUser() throws Exception{
         ArrayList<User> allUsers = new ArrayList<>();
-        allUsers.add(new User(11, "teszuser", "teszuser@gmail.com","user1","password1"));
+        allUsers.add(new User(11, "tesztuser", "tesztuser@gmail.com","user1","password1"));
 
         doReturn(allUsers).when(userDAOMock).searchAllUser();
         assertEquals(allUsers, userManager.getAllUser());
@@ -65,7 +65,7 @@ public class UserInterfaceImplTest {
     @Test
     public void testGetAllUserByCourse() throws Exception{
         ArrayList<User> allUsers = new ArrayList<>();
-        allUsers.add(new User(11, "teszuser", "teszuser@gmail.com","user1","password1"));
+        allUsers.add(new User(11, "tesztuser", "tesztuser@gmail.com","user1","password1"));
 
         doReturn(allUsers).when(userDAOMock).searchAllUserByCourse("szoftverteszteles");
         assertEquals(allUsers,userManager.getAllUserByCourse("szoftverteszteles"));
@@ -74,7 +74,7 @@ public class UserInterfaceImplTest {
     @Test
     public void testGetAllUserWithOpenRequest() throws Exception {
         ArrayList<User> allUsers = new ArrayList<>();
-        allUsers.add(new User(11, "teszuser", "teszuser@gmail.com","user1","password1"));
+        allUsers.add(new User(11, "tesztuser", "tesztuser@gmail.com","user1","password1"));
 
         doReturn(allUsers).when(userDAOMock).searchAllUser();
         assertEquals(allUsers, userManager.getAllUser());
