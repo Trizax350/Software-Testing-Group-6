@@ -54,17 +54,30 @@ public class UserInterfaceImplTest {
     }
 
     @Test
-    public void testGetAllUser(){
+    public void testGetAllUser() throws Exception{
+        ArrayList<User> allUsers = new ArrayList<>();
+        allUsers.add(new User(11, "teszuser", "teszuser@gmail.com","user1","password1"));
 
-
+        doReturn(allUsers).when(userDAOMock).searchAllUser();
+        assertEquals(allUsers, userManager.getAllUser());
     }
 
     @Test
-    public void testGetAllUserByCourse(){
+    public void testGetAllUserByCourse() throws Exception{
+        ArrayList<User> allUsers = new ArrayList<>();
+        allUsers.add(new User(11, "teszuser", "teszuser@gmail.com","user1","password1"));
+
+        doReturn(allUsers).when(userDAOMock).searchAllUserByCourse("szoftverteszteles");
+        assertEquals(allUsers,userManager.getAllUserByCourse("szoftverteszteles"));
     }
 
     @Test
-    public void testGetAllUserWithOpenRequest(){
+    public void testGetAllUserWithOpenRequest() throws Exception {
+        ArrayList<User> allUsers = new ArrayList<>();
+        allUsers.add(new User(11, "teszuser", "teszuser@gmail.com","user1","password1"));
+
+        doReturn(allUsers).when(userDAOMock).searchAllUser();
+        assertEquals(allUsers, userManager.getAllUser());
 
     }
 }
