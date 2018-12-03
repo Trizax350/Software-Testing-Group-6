@@ -1,8 +1,7 @@
 package iit.uni.miskolc.hu.softwaretesting.model;
 
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidCourseNameException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidCreditsValueException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidRecommendedSemesterException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
+
 
 public class Course {
 
@@ -24,7 +23,8 @@ public class Course {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws InvalidCourseNameException {
+        testCourseName(name);
         this.name = name;
     }
 
@@ -32,7 +32,8 @@ public class Course {
         return credits;
     }
 
-    public void setCredits(int credits) {
+    public void setCredits(int credits) throws InvalidCreditsValueException {
+        testCreditValue(credits);
         this.credits = credits;
     }
 
@@ -40,7 +41,8 @@ public class Course {
         return recSem;
     }
 
-    public void setRecSem(int recSem) {
+    public void setRecSem(int recSem) throws InvalidRecommendedSemesterException {
+        testRecommendedSemester(recSem);
         this.recSem = recSem;
     }
 

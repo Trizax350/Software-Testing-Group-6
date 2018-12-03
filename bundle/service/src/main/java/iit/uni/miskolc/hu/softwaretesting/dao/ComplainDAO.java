@@ -1,18 +1,17 @@
-package iit.uni.miskolc.hu.softwaretesting.service;
-
+package iit.uni.miskolc.hu.softwaretesting.dao;
 
 import iit.uni.miskolc.hu.softwaretesting.exceptions.AlreadyExistsException;
 import iit.uni.miskolc.hu.softwaretesting.exceptions.ComplainAlreadyClosedException;
 import iit.uni.miskolc.hu.softwaretesting.exceptions.NotFoundException;
 import iit.uni.miskolc.hu.softwaretesting.model.Complain;
-
+import iit.uni.miskolc.hu.softwaretesting.model.Request;
 import java.util.Collection;
 
-public interface ManageComplainsInterface {
+public interface ComplainDAO {
 
-    void makeComplain(Complain complain) throws AlreadyExistsException;
-    void updateComplain(Complain complain) throws NotFoundException;
-    void deleteComplain(Complain complain) throws NotFoundException;
+    void createComplain(Complain complain) throws AlreadyExistsException;
+    void modifyComplain(Complain complain) throws NotFoundException;
+    void removeComplain(Complain complain) throws NotFoundException;
     void acceptComplain(Complain complain) throws ComplainAlreadyClosedException, NotFoundException;
     void rejectComplain(Complain complain) throws ComplainAlreadyClosedException, NotFoundException;
     Collection<Complain> getAllComplain();

@@ -1,24 +1,39 @@
 package iit.uni.miskolc.hu.softwaretesting.model;
 
-import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
+import org.omg.CORBA.DynAnyPackage.Invalid;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Request {
+
+    public static ArrayList<String> formTypes = new ArrayList<>(Arrays.asList("Take course", "Revise exam", "Change group"));
+
+    public enum Forwarded {
+        FORWARDED, NOT_FORWARDED
+    }
+
+    public enum Status {
+        OPEN, CLOSED
+    }
+
     private int id;
     private String priority;
     private String type;
     private String description;
     private String reference_to_the_Course;
     private int referenceToUser;
-    private String status;
+    private Status status;
+    private Forwarded forwarded;
 
-    public Request(int id, String priority, String type, String description, String reference_to_the_Course, int referenceToUser, String status) throws InvalidIDValueException, EmptyFieldException {
+    public Request(int id, String priority, String type, String description, String reference_to_the_Course, int referenceToUser) throws InvalidIDValueException, InvalidFormTypeException, EmptyFieldException {
         testRequestID(id);
         testRequestPriority(priority);
         testRequestType(type);
         testRequestDescription(description);
         testRequestReferenceToTheCourse(reference_to_the_Course);
-        testRequestStatus(status);
+        testRequestReferenceToUser(referenceToUser);
 
         this.id = id;
         this.priority = priority;
@@ -26,14 +41,16 @@ public class Request {
         this.description = description;
         this.reference_to_the_Course = reference_to_the_Course;
         this.referenceToUser = referenceToUser;
-        this.status = status;
+        this.status = Status.OPEN;
+        this.forwarded = Forwarded.NOT_FORWARDED;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id) throws InvalidIDValueException {
+        testRequestID(id);
         this.id = id;
     }
 
@@ -41,7 +58,8 @@ public class Request {
         return priority;
     }
 
-    public void setPriority(String priority) {
+    public void setPriority(String priority) throws EmptyFieldException {
+        testRequestPriority(priority);
         this.priority = priority;
     }
 
@@ -49,7 +67,8 @@ public class Request {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(String type) throws EmptyFieldException, InvalidFormTypeException {
+        testRequestType(type);
         this.type = type;
     }
 
@@ -57,7 +76,8 @@ public class Request {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description) throws EmptyFieldException {
+        testRequestDescription(description);
         this.description = description;
     }
 
@@ -65,22 +85,48 @@ public class Request {
         return reference_to_the_Course;
     }
 
-    public void setReference_to_the_Course(String reference_to_the_Course) {
+    public void setReference_to_the_Course(String reference_to_the_Course) throws EmptyFieldException{
+        testRequestReferenceToTheCourse(reference_to_the_Course);
         this.reference_to_the_Course = reference_to_the_Course;
     }
 
     public int getReferenceToUser() { return referenceToUser; }
 
-    public void setReferenceToUser(int referenceToUser) {
+    public void setReferenceToUser(int referenceToUser) throws EmptyFieldException {
+        testRequestReferenceToUser(referenceToUser);
         this.referenceToUser = referenceToUser;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Forwarded getForwarded() {
+        return forwarded;
+    }
+
+    public void setForwarded(Forwarded forwarded) {
+        this.forwarded = forwarded;
+    }
+
+    public static void addFormType(String type) throws AlreadyExistsException {
+        if(formTypes.contains(type)) throw new AlreadyExistsException("Ez a kérvénytípus már létezik");
+        formTypes.add(type);
+    }
+
+    public static void removeFormType(String type) throws InvalidFormTypeException {
+        boolean found = false;
+        for(int i = 0; i < formTypes.size(); i++) {
+            if(type.equals(formTypes.get(i))) {
+                formTypes.remove(i);
+                found = true;
+            }
+        }
+        if(!found) throw new InvalidFormTypeException("Ilyen kérvénytípus nem létezik");
     }
 
     /**
@@ -102,9 +148,16 @@ public class Request {
     /**
      * The type cant be empty
      */
-    private void testRequestType(String type) throws EmptyFieldException {
+    private void testRequestType(String type) throws EmptyFieldException, InvalidFormTypeException {
         if(type.length() < 1)
             throw new EmptyFieldException("The type can't be empty!");
+
+        boolean validType = false;
+        for(int i = 0; i < formTypes.size(); i++) {
+            if(type.equals(formTypes.get(i))) validType = true;
+        }
+        if(!validType)
+            throw new InvalidFormTypeException("This type isn't exist");
     }
 
     /**
@@ -123,24 +176,22 @@ public class Request {
             throw new EmptyFieldException("The reference to the course field can't be empty!");
     }
 
-    /**
-     * The status cant be empty
-     */
-    private void testRequestStatus(String status) throws EmptyFieldException {
-        if(status.length() < 1)
-            throw new EmptyFieldException("The status can't be empty!");
+    private void testRequestReferenceToUser(int referenceToUser) throws EmptyFieldException {
+        if(referenceToUser < 1)
+            throw new EmptyFieldException("The reference to the course field can't be empty!");
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Request{" +
                 "id=" + id +
                 ", priority='" + priority + '\'' +
                 ", type='" + type + '\'' +
                 ", description='" + description + '\'' +
                 ", reference_to_the_Course='" + reference_to_the_Course + '\'' +
-                ", referenceToUSer='" + referenceToUser + '\'' +
+                ", referenceToUser=" + referenceToUser +
                 ", status='" + status + '\'' +
+                ", forwarded=" + forwarded +
                 '}';
     }
 }

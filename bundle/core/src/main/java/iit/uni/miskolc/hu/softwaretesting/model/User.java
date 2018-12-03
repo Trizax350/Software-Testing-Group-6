@@ -1,9 +1,7 @@
 package iit.uni.miskolc.hu.softwaretesting.model;
 
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidEmailException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidPasswordException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
+
 
 public class User {
     private int id;
@@ -17,7 +15,7 @@ public class User {
         testName(name);
         testEmail(email);
         testUsername(username);
-        testPasswordLength(password);
+        testPassword(password);
 
         this.id = id;
         this.name = name;
@@ -44,6 +42,31 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setId(int id) throws InvalidIDValueException {
+        testUserID(id);
+        this.id = id;
+    }
+
+    public void setName(String name) throws EmptyFieldException{
+        testName(name);
+        this.name = name;
+    }
+
+    public void setEmail(String email) throws InvalidEmailException {
+        testEmail(email);
+        this.email = email;
+    }
+
+    public void setUsername(String username) throws EmptyFieldException{
+        testUsername(username);
+        this.username = username;
+    }
+
+    public void setPassword(String password) throws InvalidPasswordException {
+        testPassword(password);
+        this.password = password;
     }
 
     /**
@@ -88,9 +111,21 @@ public class User {
     /**
      * The password length must be between 5 and 20
      */
-    private void testPasswordLength(String password) throws InvalidPasswordException {
+    private void testPassword(String password) throws InvalidPasswordException {
         if(password.length() < 5 || password.length() > 20)
             throw new InvalidPasswordException("The password length must be between 5 and 20!");
+        char c;
+        boolean digit = false;
+        boolean upper = false;
+        boolean lower = false;
+        for(int i = 0; i < password.length(); i++) {
+            c = password.charAt(i);
+            if(Character.isDigit(c)) digit = true;
+            if(Character.isUpperCase(c)) upper = true;
+            if(Character.isLowerCase(c)) lower = true;
+        }
+        if(!digit)
+            throw new InvalidPasswordException("The password must contain upper, lower case and digit");
     }
 
     @Override
