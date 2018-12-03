@@ -1,9 +1,6 @@
 package iit.uni.miskolc.hu.softwaretesting;
 
-import iit.uni.miskolc.hu.softwaretesting.exceptions.AlreadyExistsException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.EmptyFieldException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidFormTypeException;
-import iit.uni.miskolc.hu.softwaretesting.exceptions.InvalidIDValueException;
+import iit.uni.miskolc.hu.softwaretesting.exceptions.*;
 import iit.uni.miskolc.hu.softwaretesting.service.ManageRequestsInterfaceImpl;
 import iit.uni.miskolc.hu.softwaretesting.model.Request;
 import iit.uni.miskolc.hu.softwaretesting.dao.RequestDAO;
@@ -12,6 +9,7 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.internal.matchers.Not;
 
 import java.util.ArrayList;
 
@@ -44,10 +42,13 @@ public class ManageRequestsInterfaceImplTest {
         requestManager.sendRequest(request);
     }
 
-    @Test
-    public void testUpdateRequest() throws Exception {
+    //Expected test (testUpdateRequest) created by Papp Margaréta
+    @Test (expected = NotFoundException.class)
+    public void testUpdateRequest() throws NotFoundException, InvalidFormTypeException, InvalidIDValueException,EmptyFieldException, AlreadyExistsException{
         Request request1 = new Request(1,"High","Take course", "Desc1", "Számítógép hálózatok", 1);
-        Request request2 = new Request(1,"Low","Take course", "Desc1", "Számítógép hálózatok", 1);
+        Request request2 = new Request(2,"Low","Take course", "Desc2", "Számítógép hálózatok", 1);
+
+        doThrow(NotFoundException.class).when(requestDAOMock).modifyRequest(request2);
         requestManager.sendRequest(request1);
         requestManager.updateRequest(request2);
     }
@@ -121,13 +122,14 @@ public class ManageRequestsInterfaceImplTest {
         assertEquals(requests, requestManager.getAllRequestByCourse("Számítógép hálózatok"));
     }
 
-    @Test
-    public void testGetAllRequestByUser() throws Exception{
+    //Expected test (testGetAllRequestByUser) created by Papp Margaréta
+    @Test (expected = UserNotFoundException.class)
+    public void testGetAllRequestByUser() throws UserNotFoundException,InvalidIDValueException,InvalidFormTypeException,EmptyFieldException{
         ArrayList<Request> requests = new ArrayList<>();
         requests.add(new Request(1,"High","Take course", "Desc1", "Számítógép hálózatok", 1));
 
-        doReturn(requests).when(requestDAOMock).searchAllRequestByUser(1);
-        assertEquals(requests, requestManager.getAllRequestByUser(1));
+        doThrow(UserNotFoundException.class).when(requestDAOMock).searchAllRequestByUser(222);
+        requestManager.getAllRequestByUser(222);
     }
 
     //Expected test (testFindRequestById) created by Hajnal Róbert Dávid
