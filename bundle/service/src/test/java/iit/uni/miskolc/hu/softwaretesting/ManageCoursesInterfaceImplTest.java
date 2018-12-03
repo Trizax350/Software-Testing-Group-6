@@ -81,15 +81,6 @@ public class ManageCoursesInterfaceImplTest {
         assertEquals(courses, courseManager.getAllCourseByCredits(5));
     }
 
-    @Test
-    public void testGetAllCourseByUser() {
-        ArrayList<Course> courses = new ArrayList<>();
-        courses.add(new Course("Programozás alapjai", 5, 1));
-
-        doReturn(courses).when(courseDAOMock).searchAllCourseByUser("user1");
-        assertEquals(courses, courseManager.getAllCourseByUser("user1"));
-
-    }
 
     @Test
     public void testFindCourseByName() throws Exception{
