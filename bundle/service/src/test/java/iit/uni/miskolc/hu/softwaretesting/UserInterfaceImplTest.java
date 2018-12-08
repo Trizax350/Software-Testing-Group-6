@@ -52,7 +52,8 @@ public class UserInterfaceImplTest {
     @Test(expected = UserNotFoundException.class)
     public void testDeleteUser() throws UserNotFoundException, EmptyFieldException{
         User user = new User(13, "tesztuser", "tesztuser@gmail.com", "user1", "password1");
-        doThrow(UserNotFoundException.class).when(userDAOMock).removeUser(user);
+        doThrow(new UserNotFoundException("That user doesn't exist"))
+                .when(userDAOMock).removeUser(user);
         userManager.addUser(user);
         userManager.deleteUser(user);
     }
