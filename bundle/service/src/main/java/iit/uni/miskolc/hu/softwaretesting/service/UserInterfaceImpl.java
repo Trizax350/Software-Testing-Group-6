@@ -16,17 +16,17 @@ public class UserInterfaceImpl implements UserInterface {
     }
 
     @Override
-    public void addUser(User user) throws AlreadyExistsException {
+    public void addUser(User user) throws AlreadyExistsException,  EmptyFieldException {
         userDAO.createUser(user);
     }
 
     @Override
-    public void updateUser(User user) throws UserNotFoundException {
+    public void updateUser(User user) throws UserNotFoundException,EmptyFieldException {
         userDAO.modifyUser(user);
     }
 
     @Override
-    public void deleteUser(User user) throws UserNotFoundException {
+    public void deleteUser(User user) throws UserNotFoundException, EmptyFieldException {
         userDAO.removeUser(user);
     }
 
@@ -36,7 +36,7 @@ public class UserInterfaceImpl implements UserInterface {
     }
 
     @Override
-    public Collection<User> getAllUserByCourse(String course) {
+    public Collection<User> getAllUserByCourse(String course) throws InvalidCourseNameException, CourseNotFoundException {
         return userDAO.searchAllUserByCourse(course);
     }
 
