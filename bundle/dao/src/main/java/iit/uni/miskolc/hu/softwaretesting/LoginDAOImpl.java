@@ -22,7 +22,10 @@ public class LoginDAOImpl implements LoginDAO {
 
         ArrayList<User> users = userDAOImpl.getUsers();
         for(int i = 0; i < users.size(); i++) {
-            if(username.equals(users.get(i).getUsername()) && username.equals(users.get(i).getPassword())) login = true;
+            if(username.equals(users.get(i).getUsername()) && password.equals(users.get(i).getPassword())){
+                login = true;
+
+            }
         }
 
         if(!login) throw new LoginFailed("Érvénytelen felhsználónév vagy jelszó");

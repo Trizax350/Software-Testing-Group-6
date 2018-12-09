@@ -37,7 +37,7 @@ public class CourseConstructorTest {
      */
     @Test(expected = InvalidRecommendedSemesterException.class)
     public void testConstructorWithIncorrectSemester() throws InvalidCreditsValueException, InvalidRecommendedSemesterException, InvalidCourseNameException {
-        course = new Course("Name", 5, 0);
+        course = new Course("Name", 5, 1);
     }
 
     /**

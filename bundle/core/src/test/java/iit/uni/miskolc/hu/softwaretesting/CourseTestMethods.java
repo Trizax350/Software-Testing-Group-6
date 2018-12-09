@@ -32,7 +32,7 @@ public class CourseTestMethods {
     @Test
     public void testSetName() throws InvalidCourseNameException {
         String name = "Course 7";
-        this.course.setName(name);
+        this.course.setName("course 8");
         assertEquals(name, this.course.getName());
     }
 
