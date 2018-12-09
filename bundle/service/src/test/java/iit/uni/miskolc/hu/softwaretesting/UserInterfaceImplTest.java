@@ -31,29 +31,31 @@ public class UserInterfaceImplTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Test
-    public void testAddUser() throws Exception {
+    @Test(expected = AlreadyExistsException.class)
+    public void testAddUser() throws AlreadyExistsException,  EmptyFieldException {
         User user = new User(11, "tesztuser", "tesztuser@gmail.com", "user1", "password1");
+        doThrow(new AlreadyExistsException("That user already exists"))
+                .when(userDAOMock).createUser(user);
         userManager.addUser(user);
     }
 
-    @Test
-    public void testUpdateUser() throws Exception{
+    @Test(expected = UserNotFoundException.class)
+    public void testUpdateUser() throws UserNotFoundException,EmptyFieldException {
         User user = new User(11, "tesztuser", "tesztuser@gmail.com", "user1", "password1");
         User user2 = new User(11, "tesztuser", "tesztuser@gmail.com", "user1", "password222");
-
+        doThrow(new UserNotFoundException("Couldn't find that user"))
+            .when(userDAOMock).modifyUser(user2);
         userManager.addUser(user);
         userManager.updateUser(user2);
-
     }
 
-    @Test
-    public void testDeleteUser() throws Exception{
+    @Test(expected = UserNotFoundException.class)
+    public void testDeleteUser() throws UserNotFoundException, EmptyFieldException{
         User user = new User(13, "tesztuser", "tesztuser@gmail.com", "user1", "password1");
-
+        doThrow(new UserNotFoundException("That user doesn't exist"))
+                .when(userDAOMock).removeUser(user);
         userManager.addUser(user);
         userManager.deleteUser(user);
-
     }
 
     @Test
@@ -65,11 +67,12 @@ public class UserInterfaceImplTest {
         assertEquals(allUsers, userManager.getAllUser());
     }
 
-    @Test
-    public void testGetAllUserByCourse() throws Exception{
+    @Test(expected = InvalidCourseNameException.class)
+    public void testGetAllUserByCourse() throws InvalidCourseNameException, CourseNotFoundException {
         ArrayList<User> allUsers = new ArrayList<>();
         allUsers.add(new User(11, "tesztuser", "tesztuser@gmail.com","user1","password1"));
-
+        doThrow(new InvalidCourseNameException("no course exists with this name"))
+                .when(userDAOMock).searchAllUserByCourse("szoftverteszteles");
         doReturn(allUsers).when(userDAOMock).searchAllUserByCourse("szoftverteszteles");
         assertEquals(allUsers,userManager.getAllUserByCourse("szoftverteszteles"));
     }
@@ -81,6 +84,5 @@ public class UserInterfaceImplTest {
 
         doReturn(allUsers).when(userDAOMock).searchAllUser();
         assertEquals(allUsers, userManager.getAllUser());
-
     }
 }
