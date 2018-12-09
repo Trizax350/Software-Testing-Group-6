@@ -7,6 +7,8 @@ public class LoginInterfaceImpl implements LoginInterface {
 
     private LoginDAO loginDAO;
 
+    public LoginInterfaceImpl(){}
+
     public LoginInterfaceImpl(LoginDAO loginDAO) {
         this.loginDAO = loginDAO;
     }
